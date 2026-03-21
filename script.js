@@ -8,12 +8,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const faqQuestions = document.querySelectorAll(".faq-question");
     const revealItems = document.querySelectorAll(".animate-up, .reveal");
 
+    // NEW: Modal elements
+    const modalTrigger = document.querySelector(".enquire-modal-trigger");
+    const modalOverlay = document.getElementById("enquire-modal");
+    const modalClose = document.querySelector(".modal-close");
+
     const closeMenu = () => {
         body.classList.remove("menu-open");
         if (menuToggle) {
             menuToggle.setAttribute("aria-expanded", "false");
         }
     };
+
+    // NEW: Modal functions
+    const openModal = () => {
+        if (modalOverlay) {
+            modalOverlay.classList.add("is-open");
+            body.style.overflow = "hidden";
+        }
+    };
+
+    const closeModal = () => {
+        if (modalOverlay) {
+            modalOverlay.classList.remove("is-open");
+            body.style.overflow = "";
+        }
+    };
+
+    // NEW: Modal event listeners
+    if (modalTrigger) {
+        modalTrigger.addEventListener("click", openModal);
+    }
+
+    if (modalClose) {
+        modalClose.addEventListener("click", closeModal);
+    }
+
+    // NEW: Close modal when clicking on overlay (outside modal content)
+    if (modalOverlay) {
+        modalOverlay.addEventListener("click", (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    }
+
+    // NEW: Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modalOverlay?.classList.contains("is-open")) {
+            closeModal();
+        }
+    });
 
     if (menuToggle) {
         menuToggle.addEventListener("click", () => {
