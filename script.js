@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const revealItems = document.querySelectorAll(".animate-up, .reveal");
 
     // NEW: Modal elements
-    const modalTrigger = document.querySelector(".enquire-modal-trigger");
+    // NEW: Support all enquiry buttons opening the same modal
+    const modalTriggers = document.querySelectorAll(".enquire-modal-trigger");
     const modalOverlay = document.getElementById("enquire-modal");
     const modalClose = document.querySelector(".modal-close");
 
@@ -36,9 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // NEW: Modal event listeners
-    if (modalTrigger) {
-        modalTrigger.addEventListener("click", openModal);
-    }
+    modalTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", openModal);
+    });
 
     if (modalClose) {
         modalClose.addEventListener("click", closeModal);
