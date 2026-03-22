@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the gallery component.">
+    <title>Gallery | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section class="gallery-section section-frame">
+    <div class="container">
+        <div class="section-heading animate-up">
+            <span class="section-tag">Visual preview</span>
+            <h2 class="section-title">A quick look at the lifestyle mood of the project</h2>
+        </div>
+
+        <div class="gallery-grid">
+            <article class="gallery-item reveal">
+                <img src="building.jpg" alt="Project exterior">
+                <div class="gallery-overlay">
+                    <h4>Signature facade</h4>
+                </div>
+            </article>
+            <article class="gallery-item reveal">
+                <img src="garden.jpg" alt="Landscaped garden">
+                <div class="gallery-overlay">
+                    <h4>Green open spaces</h4>
+                </div>
+            </article>
+            <article class="gallery-item reveal">
+                <img src="gym.jpg" alt="Modern gym">
+                <div class="gallery-overlay">
+                    <h4>Fitness amenities</h4>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

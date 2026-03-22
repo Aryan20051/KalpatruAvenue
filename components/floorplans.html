@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the floorplans component.">
+    <title>Floorplans | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section id="floorplans" class="bg-panel section-frame">
+    <div class="container">
+        <div class="section-heading animate-up">
+            <span class="section-tag">Layouts</span>
+            <h2 class="section-title">Floor plans built for practical, comfortable living</h2>
+            <p class="section-desc">Choose between efficient 1BHK homes and larger 2BHK layouts, each designed to support free movement and better everyday utility.</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="1bhk">1 BHK Apartments</button>
+            <button class="tab-btn" data-tab="2bhk">2 BHK Apartments</button>
+        </div>
+
+        <div id="1bhk" class="tab-content active">
+            <div class="plan-shell reveal">
+                <img src="floorplan1.jpg" alt="1BHK floor plan">
+            </div>
+        </div>
+
+        <div id="2bhk" class="tab-content">
+            <div class="plan-shell reveal">
+                <img src="floorplan2.jpg" alt="2BHK floor plan">
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

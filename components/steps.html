@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the steps component.">
+    <title>Steps | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section class="section-frame">
+    <div class="container">
+        <div class="section-heading animate-up">
+            <span class="section-tag">Booking process</span>
+            <h2 class="section-title">Simple steps to move from enquiry to booking</h2>
+        </div>
+
+        <div class="steps-container">
+            <article class="step-card reveal">
+                <div class="step-num">1</div>
+                <h3>Share your interest</h3>
+                <p>Send your details and our team will connect with the latest pricing and availability.</p>
+            </article>
+            <article class="step-card reveal">
+                <div class="step-num">2</div>
+                <h3>Visit the project</h3>
+                <p>Schedule a guided site visit to understand layouts, amenities, and the surrounding area.</p>
+            </article>
+            <article class="step-card reveal">
+                <div class="step-num">3</div>
+                <h3>Select your unit</h3>
+                <p>Choose the right configuration and get support on booking, finance, and documentation.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

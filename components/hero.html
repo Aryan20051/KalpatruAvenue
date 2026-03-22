@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the hero component.">
+    <title>Hero | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<header id="overview" class="hero section-frame">
+    <div class="hero-backdrop"></div>
+    <div class="container hero-grid">
+        <div class="hero-copy animate-up">
+            <span class="section-tag">Future-ready address</span>
+            <h1>Elevated city living with a calmer pace of life.</h1>
+            <p>Kalpatru Avenue brings together well-planned 1BHK and 2BHK homes, lifestyle amenities, and fast everyday connectivity in one polished residential address at Naigaon East.</p>
+
+            <div class="hero-highlights">
+                <div>
+                    <strong>35 Lacs+</strong>
+                    <span>Starting price</span>
+                </div>
+                <div>
+                    <strong>Dec 2027</strong>
+                    <span>Expected possession</span>
+                </div>
+                <div>
+                    <strong>G + 22</strong>
+                    <span>Floors in each tower</span>
+                </div>
+            </div>
+
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Get brochure</a>
+                <a href="#pricing" class="btn btn-outline">View pricing</a>
+            </div>
+        </div>
+
+        <div class="hero-card animate-up">
+            <p class="eyebrow">Project snapshot</p>
+            <h2>Designed for practical luxury and everyday convenience.</h2>
+            <ul class="hero-card-list">
+                <li><i class="fas fa-circle-check"></i> Premium 1BHK and 2BHK residences</li>
+                <li><i class="fas fa-circle-check"></i> Fast access to station, highways, schools, and hospitals</li>
+                <li><i class="fas fa-circle-check"></i> Lifestyle amenities for fitness, leisure, and community</li>
+            </ul>
+            <div class="hero-card-footer">
+                <div>
+                    <span>MahaRERA</span>
+                    <strong>Registered Project</strong>
+                </div>
+                <a href="#floorplans">See layouts</a>
+            </div>
+        </div>
+    </div>
+</header>
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

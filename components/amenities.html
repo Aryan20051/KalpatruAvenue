@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the amenities component.">
+    <title>Amenities | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section id="amenities" class="bg-panel section-frame">
+    <div class="container">
+        <div class="section-heading animate-up">
+            <span class="section-tag">Lifestyle</span>
+            <h2 class="section-title">Modern amenities that support wellness, family time, and convenience</h2>
+        </div>
+
+        <div class="amenities-grid">
+            <article class="amenity-card reveal">
+                <i class="fas fa-tree"></i>
+                <h3>Landscaped Garden</h3>
+                <p>Green areas for fresh air, walks, and quiet downtime.</p>
+            </article>
+            <article class="amenity-card reveal">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Modern Gym</h3>
+                <p>Dedicated fitness space for regular routines close to home.</p>
+            </article>
+            <article class="amenity-card reveal">
+                <i class="fas fa-child-reaching"></i>
+                <h3>Children's Play Area</h3>
+                <p>Safe, active zones where young residents can enjoy the outdoors.</p>
+            </article>
+            <article class="amenity-card reveal">
+                <i class="fas fa-shield-halved"></i>
+                <h3>24x7 Security</h3>
+                <p>Peace of mind through secure and monitored community access.</p>
+            </article>
+            <article class="amenity-card reveal">
+                <i class="fas fa-spa"></i>
+                <h3>Yoga Deck</h3>
+                <p>A calm setting to recharge, stretch, and start the day well.</p>
+            </article>
+            <article class="amenity-card reveal">
+                <i class="fas fa-users"></i>
+                <h3>Community Hall</h3>
+                <p>Versatile social space for celebrations and neighborhood events.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

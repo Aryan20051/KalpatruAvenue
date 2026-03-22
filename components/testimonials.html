@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the testimonials component.">
+    <title>Testimonials | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section class="bg-panel section-frame">
+    <div class="container">
+        <div class="section-heading animate-up">
+            <span class="section-tag">Testimonials</span>
+            <h2 class="section-title">What interested homebuyers appreciate most</h2>
+        </div>
+
+        <div class="testimonial-grid">
+            <article class="test-card reveal">
+                <i class="fas fa-quote-left"></i>
+                <p class="test-content">Smooth booking support, well-planned flats, and a reassuring level of transparency throughout the visit.</p>
+                <p class="test-author">Anita Mehra</p>
+            </article>
+            <article class="test-card reveal">
+                <i class="fas fa-quote-left"></i>
+                <p class="test-content">The pricing felt genuine and the location has strong growth potential without losing residential comfort.</p>
+                <p class="test-author">Rajesh Patil</p>
+            </article>
+            <article class="test-card reveal">
+                <i class="fas fa-quote-left"></i>
+                <p class="test-content">The sample flat and amenity planning made the project feel practical for family living from day one.</p>
+                <p class="test-author">Sonal Desai</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

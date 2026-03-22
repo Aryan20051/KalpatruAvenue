@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the pricing component.">
+    <title>Pricing | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section id="pricing" class="section-frame">
+    <div class="container">
+        <div class="section-heading animate-up">
+            <span class="section-tag">Investment</span>
+            <h2 class="section-title">Transparent pricing with strong value for a growing location</h2>
+            <p class="section-desc">The pricing is positioned to remain attractive for both end users and long-term buyers looking at the rise of Naigaon East.</p>
+        </div>
+
+        <div class="pricing-showcase">
+            <div class="pricing-wrapper reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Configuration</th>
+                            <th>Carpet Area (Sq. Ft.)</th>
+                            <th>Starting Price</th>
+                            <th>Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 BHK Homes</td>
+                            <td>395 - 425</td>
+                            <td class="price-text">Rs. 35 Lacs Onwards</td>
+                            <td>Limited inventory</td>
+                        </tr>
+                        <tr>
+                            <td>2 BHK Homes</td>
+                            <td>580 - 640</td>
+                            <td class="price-text">Rs. 52 Lacs Onwards</td>
+                            <td>Best-value family option</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <aside class="price-side-card reveal">
+                <p class="eyebrow">Why buyers shortlist this project</p>
+                <h3>Balanced ticket size, strong location upside, and useful amenities.</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Suitable for first-time homebuyers</li>
+                    <li><i class="fas fa-check"></i> Smart value against nearby suburbs</li>
+                    <li><i class="fas fa-check"></i> Good fit for family-focused living</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary">Get cost sheet</a>
+            </aside>
+        </div>
+
+        <p class="pricing-note">Note: Price and availability may vary. Please contact the sales team for the latest inventory and payment plan details.</p>
+    </div>
+</section>
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview page for Kalpatru Avenue components.">
+    <title>Component Preview | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+
+    <section class="section-frame" style="padding: 2rem 0 1rem;">
+        <div class="container">
+            <div class="section-heading compact-heading">
+                <span class="section-tag">Component preview</span>
+                <h1 class="section-title" id="preview-title">Loading component...</h1>
+                <p class="section-desc">
+                    Open individual component previews from
+                    <a href="components/previews.html" style="color: var(--forest); font-weight: 700;">the previews list</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <main id="component-host"></main>
+
+    <script src="components/script.js"></script>
+    <script>
+        const allowedComponents = new Set([
+            'navbar.html',
+            'hero.html',
+            'quick-info.html',
+            'story-band.html',
+            'location.html',
+            'gallery.html',
+            'floorplans.html',
+            'pricing.html',
+            'amenities.html',
+            'developer.html',
+            'testimonials.html',
+            'steps.html',
+            'faq.html',
+            'contact.html',
+            'footer.html',
+            'modal.html'
+        ]);
+
+        const params = new URLSearchParams(window.location.search);
+        const selectedComponent = params.get('file') || 'hero.html';
+        const previewTitle = document.getElementById('preview-title');
+        const componentHost = document.getElementById('component-host');
+
+        const formatName = (fileName) => fileName
+            .replace('.html', '')
+            .split('-')
+            .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+            .join(' ');
+
+        const loadMarkup = async (path) => {
+            const response = await fetch(path);
+            if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+            return response.text();
+        };
+
+        const showError = (message) => {
+            previewTitle.textContent = 'Preview unavailable';
+            componentHost.innerHTML = `
+                <section class="section-frame">
+                    <div class="container">
+                        <div class="pricing-wrapper">
+                            <p>${message}</p>
+                        </div>
+                    </div>
+                </section>
+            `;
+        };
+
+        const renderPreview = async () => {
+            if (!allowedComponents.has(selectedComponent)) {
+                showError('That component is not in the approved preview list.');
+                return;
+            }
+
+            previewTitle.textContent = `${formatName(selectedComponent)} Preview`;
+
+            try {
+                const componentMarkup = await loadMarkup(`components/${selectedComponent}`);
+                let modalMarkup = '';
+
+                if (selectedComponent !== 'modal.html') {
+                    modalMarkup = await loadMarkup('components/modal.html');
+                }
+
+                componentHost.innerHTML = componentMarkup + modalMarkup;
+
+                if (selectedComponent === 'modal.html') {
+                    const modal = componentHost.querySelector('.modal-overlay');
+                    if (modal) {
+                        modal.classList.add('is-open');
+                    }
+                }
+
+                if (window.setupComponentPreviewInteractions) {
+                    window.setupComponentPreviewInteractions();
+                }
+            } catch (error) {
+                console.error('Component preview failed:', error);
+                showError(`Unable to load ${selectedComponent}.`);
+            }
+        };
+
+        renderPreview();
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the quick-info component.">
+    <title>Quick Info | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section class="quick-info section-frame">
+    <div class="container">
+        <div class="section-heading compact-heading animate-up">
+            <span class="section-tag">Project facts</span>
+            <h2 class="section-title">A sharper snapshot of what matters most</h2>
+        </div>
+
+        <div class="quick-info-grid">
+            <article class="info-card reveal">
+                <h4>Developer</h4>
+                <p>Shrinath Realtors</p>
+            </article>
+            <article class="info-card reveal">
+                <h4>Location</h4>
+                <p>Naigaon East, Mumbai</p>
+            </article>
+            <article class="info-card reveal">
+                <h4>Possession</h4>
+                <p>December 2027</p>
+            </article>
+            <article class="info-card reveal">
+                <h4>Typology</h4>
+                <p>1BHK and 2BHK</p>
+            </article>
+            <article class="info-card reveal">
+                <h4>Towers</h4>
+                <p>2 Residential Towers</p>
+            </article>
+            <article class="info-card reveal">
+                <h4>Floors</h4>
+                <p>Ground + 22 Levels</p>
+            </article>
+            <article class="info-card reveal">
+                <h4>Status</h4>
+                <p>New Launch Opportunity</p>
+            </article>
+            <article class="info-card reveal">
+                <h4>Value Edge</h4>
+                <p>Strong connectivity with family-first planning</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

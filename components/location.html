@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the location component.">
+    <title>Location | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section id="location" class="section-frame">
+    <div class="container">
+        <div class="section-heading animate-up">
+            <span class="section-tag">Connectivity</span>
+            <h2 class="section-title">Prime location advantages for work, family, and everyday access</h2>
+            <p class="section-desc">The address is positioned to keep you connected to the wider city while preserving a quieter residential experience around home.</p>
+        </div>
+
+        <div class="con-grid">
+            <article class="con-item reveal">
+                <div class="con-icon"><i class="fas fa-train"></i></div>
+                <div class="con-text">
+                    <h4>Naigaon Station</h4>
+                    <p>Approx. 7 minutes away</p>
+                </div>
+            </article>
+            <article class="con-item reveal">
+                <div class="con-icon"><i class="fas fa-road"></i></div>
+                <div class="con-text">
+                    <h4>Western Express Highway</h4>
+                    <p>Approx. 15 minutes away</p>
+                </div>
+            </article>
+            <article class="con-item reveal">
+                <div class="con-icon"><i class="fas fa-bus"></i></div>
+                <div class="con-text">
+                    <h4>Juchandra Link</h4>
+                    <p>Approx. 10 minutes away</p>
+                </div>
+            </article>
+            <article class="con-item reveal">
+                <div class="con-icon"><i class="fas fa-map-location-dot"></i></div>
+                <div class="con-text">
+                    <h4>Mumbai-Ahmedabad Highway</h4>
+                    <p>Approx. 12 minutes away</p>
+                </div>
+            </article>
+            <article class="con-item reveal">
+                <div class="con-icon"><i class="fas fa-school"></i></div>
+                <div class="con-text">
+                    <h4>Don Bosco School</h4>
+                    <p>Approx. 5 minutes away</p>
+                </div>
+            </article>
+            <article class="con-item reveal">
+                <div class="con-icon"><i class="fas fa-hospital"></i></div>
+                <div class="con-text">
+                    <h4>Seven Star Hospital</h4>
+                    <p>Approx. 6 minutes away</p>
+                </div>
+            </article>
+            <article class="con-item reveal">
+                <div class="con-icon"><i class="fas fa-bag-shopping"></i></div>
+                <div class="con-text">
+                    <h4>Raghuleela Mall</h4>
+                    <p>Approx. 20 minutes away</p>
+                </div>
+            </article>
+            <article class="con-item reveal">
+                <div class="con-icon"><i class="fas fa-umbrella-beach"></i></div>
+                <div class="con-text">
+                    <h4>Essel World Leisure Zone</h4>
+                    <p>Approx. 25 minutes away</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

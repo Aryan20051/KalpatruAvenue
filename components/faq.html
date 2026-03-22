@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the faq component.">
+    <title>Faq | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section class="bg-panel section-frame">
+    <div class="container">
+        <div class="section-heading animate-up">
+            <span class="section-tag">FAQ</span>
+            <h2 class="section-title">Answers to common buyer questions</h2>
+        </div>
+
+        <div class="faq-container">
+            <article class="faq-item reveal">
+                <button class="faq-question" type="button">Is Kalpatru Avenue a MahaRERA registered project? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Yes, the project is presented as a MahaRERA registered development, offering better legal clarity and buyer confidence.</p>
+                </div>
+            </article>
+            <article class="faq-item reveal">
+                <button class="faq-question" type="button">What home configurations are available? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>The project offers 1BHK and 2BHK residences with functional layouts and contemporary amenities.</p>
+                </div>
+            </article>
+            <article class="faq-item reveal">
+                <button class="faq-question" type="button">How far is Naigaon Railway Station? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Naigaon Station is approximately 7 minutes away, making daily commuting relatively convenient for residents.</p>
+                </div>
+            </article>
+            <article class="faq-item reveal">
+                <button class="faq-question" type="button">Can buyers explore home loan options? <i class="fas fa-chevron-down"></i></button>
+                <div class="faq-answer">
+                    <p>Yes, buyers can typically explore home loan support through approved lending partners and available financing channels.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

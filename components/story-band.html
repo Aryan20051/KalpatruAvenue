@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the story-band component.">
+    <title>Story Band | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section class="story-band section-frame">
+    <div class="container features-layout">
+        <div class="features-content reveal">
+            <span class="section-tag">Living redefined</span>
+            <h2 class="section-title">A modern home that feels bright, efficient, and balanced</h2>
+            <p class="section-desc">Kalpatru Avenue is planned for buyers who want more than just square footage. The project combines smart internal layouts, quality construction, elegant surroundings, and a location that keeps daily travel simpler without giving up residential calm.</p>
+
+            <div class="feature-points">
+                <div class="feature-point">
+                    <i class="fas fa-building"></i>
+                    <div>
+                        <h3>Thoughtful planning</h3>
+                        <p>Layouts are shaped for usable space, natural flow, and family comfort.</p>
+                    </div>
+                </div>
+                <div class="feature-point">
+                    <i class="fas fa-route"></i>
+                    <div>
+                        <h3>Everyday connectivity</h3>
+                        <p>Commutes, essentials, schools, and recreation stay within practical reach.</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#contact" class="btn btn-primary">Schedule a site visit</a>
+        </div>
+
+        <div class="features-image reveal">
+            <img src="building.jpg" alt="Exterior view of Kalpatru Avenue" class="feature-img">
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

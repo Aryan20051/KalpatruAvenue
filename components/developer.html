@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the developer component.">
+    <title>Developer | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<section class="developer-section section-frame">
+    <div class="container features-layout reverse-layout">
+        <div class="features-image reveal">
+            <img src="gym.jpg" alt="Lifestyle and amenity image" class="feature-img alt-shadow">
+        </div>
+
+        <div class="features-content reveal">
+            <span class="section-tag">Developer trust</span>
+            <h2 class="section-title">Shrinath Realtors focuses on clarity, timely delivery, and buyer confidence</h2>
+            <p class="section-desc">The team behind Kalpatru Avenue is known for quality-minded construction and transparent customer engagement. The project reflects a practical approach to building homes that are accessible, well-connected, and genuinely livable.</p>
+
+            <div class="metric-row">
+                <div class="metric-card">
+                    <strong>15+</strong>
+                    <span>Years of market presence</span>
+                </div>
+                <div class="metric-card">
+                    <strong>1000+</strong>
+                    <span>Families served</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>

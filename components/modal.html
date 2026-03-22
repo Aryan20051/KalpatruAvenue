@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Standalone preview for the modal component.">
+    <title>Modal | Kalpatru Avenue</title>
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="page-orb page-orb-one"></div>
+    <div class="page-orb page-orb-two"></div>
+    <main data-component-root>
+<div id="enquire-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-body">
+            <p class="eyebrow">Register your interest</p>
+            <h3>Request a callback</h3>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="modal-name">Full Name</label>
+                    <input id="modal-name" type="text" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-mobile">Mobile Number</label>
+                    <input id="modal-mobile" type="tel" placeholder="Enter your number" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-email">Email Address</label>
+                    <input id="modal-email" type="email" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="btn-full">Send enquiry</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    </main>
+    <script src="components/script.js"></script>
+    <script>
+        if (window.setupComponentPreviewInteractions) {
+            window.setupComponentPreviewInteractions();
+        }
+
+        const modal = document.getElementById('enquire-modal');
+        if (modal && window.location.pathname.endsWith('/modal.html')) {
+            modal.classList.add('is-open');
+        }
+    </script>
+</body>
+</html>
