@@ -537,7 +537,6 @@ section {
 .con-item:hover,
 .amenity-card:hover,
 .test-card:hover,
-.gallery-item:hover,
 .price-side-card:hover {
     transform: translateY(-6px);
 }
@@ -647,29 +646,38 @@ section {
     margin-bottom: 0.15rem;
 }
 
-.gallery-grid {
-    grid-template-columns: 1.15fr 0.85fr 0.85fr;
-    gap: 1rem;
-}
-
-.gallery-item {
+/* ── Gallery Carousel ── */
+.gallery-carousel {
     position: relative;
-    min-height: 420px;
+    width: 100%;
     border-radius: 28px;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: transform var(--transition), box-shadow var(--transition);
+    box-shadow: var(--shadow-lg);
 }
 
-.gallery-item img {
+.carousel-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.carousel-slide {
+    position: relative;
+    min-width: 100%;
+    width: 100%;
+    min-height: 420px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.carousel-slide img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.06);
+    display: block;
 }
 
 .gallery-overlay {
@@ -684,6 +692,61 @@ section {
 .gallery-overlay h4 {
     color: var(--white);
     font-size: 2rem;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--forest);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, background 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.carousel-btn:hover {
+    background: var(--white);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev { left: 1rem; }
+.carousel-next { right: 1rem; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-dot.active {
+    background: var(--white);
+    width: 28px;
 }
 
 .tabs {
@@ -876,34 +939,52 @@ tbody tr:last-child td {
     font-family: "Manrope", sans-serif;
 }
 
-.testimonial-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-}
-
-.test-card {
+/* ── Testimonial Carousel ── */
+.testimonial-carousel {
     position: relative;
-    padding: 2rem;
+    overflow: hidden;
     border-radius: 28px;
     background: rgba(255, 253, 248, 0.88);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(31, 36, 30, 0.07);
 }
 
-.test-card i {
+.testimonial-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.testimonial-slide {
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    padding: 2.5rem 2.2rem 2rem;
+}
+
+.testimonial-slide i {
     color: rgba(186, 145, 84, 0.35);
     font-size: 1.9rem;
 }
 
 .test-content {
     margin: 1rem 0 1.2rem;
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--muted);
+    line-height: 1.7;
 }
 
 .test-author {
     color: var(--forest);
     font-weight: 800;
+    font-size: 1rem;
+}
+
+.testimonial-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0 2rem 1.5rem;
 }
 
 .steps-container {
@@ -1487,14 +1568,12 @@ tbody tr:last-child td {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .gallery-grid,
     .con-grid {
         grid-template-columns: 1fr 1fr;
     }
 
-    .gallery-item:first-child {
-        grid-column: 1 / -1;
-        min-height: 320px;
+    .carousel-slide {
+        min-height: 360px;
     }
 
     .hero-card {
@@ -1550,17 +1629,54 @@ tbody tr:last-child td {
         padding-top: 8rem;
     }
 
-    .hero-highlights,
+    .hero-highlights {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
     .quick-info-grid,
-    .amenities-grid,
     .testimonial-grid,
     .steps-container,
     .metric-row,
-    .gallery-grid,
-    .con-grid,
     .footer-shell {
         grid-template-columns: 1fr;
         display: grid;
+    }
+
+    /* Connectivity: single column on tablet */
+    .con-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .con-item {
+        padding: 1.1rem 1.15rem;
+    }
+
+    /* Amenities: 2 columns on tablet */
+    .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.85rem;
+    }
+
+    /* Pricing stacks on tablet */
+    .pricing-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    /* Tabs: full width on tablet */
+    .tabs {
+        display: flex;
+        width: 100%;
+    }
+
+    .tab-btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    .carousel-slide {
+        min-height: 300px;
     }
 
     .footer-shell {
@@ -1569,37 +1685,104 @@ tbody tr:last-child td {
     }
 
     .feature-img {
-        height: 420px;
+        height: 380px;
     }
 
     .contact-info h2,
     .hero-card h2,
     .price-side-card h3 {
-        font-size: 2.3rem;
+        font-size: 2.1rem;
     }
 
     .map-card {
         min-height: 280px;
     }
 
-    /* TABLET: Modal remains sleek with portrait proportions */
     .modal-content {
         max-width: 380px;
     }
 }
 
 @media (max-width: 640px) {
+    /* ── Global: safe margins, no horizontal scroll ── */
+    html, body {
+        overflow-x: hidden;
+    }
+
     .container {
-        width: min(var(--container), calc(100% - 1.3rem));
+        width: min(var(--container), calc(100% - 2rem));
     }
 
     section {
-        padding: 4.4rem 0;
+        padding: 3.5rem 0;
+    }
+
+    .section-heading {
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.7rem, 5vw, 2.4rem);
+        margin: 0.75rem 0 0.8rem;
+    }
+
+    .section-desc {
+        font-size: 0.95rem;
+    }
+
+    .section-tag, .eyebrow {
+        font-size: 0.72rem;
+    }
+
+    /* ── bg-panel pseudo-element fix ── */
+    .bg-panel::before,
+    .story-band::before,
+    .gallery-section::before {
+        inset: 0.75rem auto 0.75rem 0.75rem;
+        width: calc(100% - 1.5rem);
+        border-radius: 24px;
+    }
+
+    /* ── 1. HEADER / NAVBAR ── */
+    .navbar {
+        padding: 0.6rem 0;
     }
 
     .nav-shell {
-        padding: 0.6rem 0.9rem;
-        border-radius: 24px;
+        padding: 0.55rem 0.75rem;
+        border-radius: 20px;
+        gap: 0.5rem;
+    }
+
+    .logo-mark {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+    }
+
+    .logo {
+        gap: 0.6rem;
+    }
+
+    .logo strong {
+        font-size: 0.82rem;
+        letter-spacing: 0.1em;
+    }
+
+    .logo small {
+        font-size: 0.65rem;
+    }
+
+    .menu-toggle {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+    }
+
+    .nav-panel {
+        border-radius: 20px;
+        padding: 0.75rem;
     }
 
     .nav-panel .btn {
@@ -1608,121 +1791,613 @@ tbody tr:last-child td {
         font-size: 0.8rem;
     }
 
-    .logo strong {
+    /* ── 2. HERO SECTION ── */
+    .hero {
+        padding: 6.5rem 0 3.5rem;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(1.85rem, 6.5vw, 2.8rem);
+        margin: 0.8rem 0 1rem;
+        max-width: 100%;
+        line-height: 1.1;
+    }
+
+    .hero-copy p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Stat cards: side-by-side row, equal width */
+    .hero-highlights {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.6rem;
+        margin: 1.5rem 0;
+    }
+
+    .hero-highlights div {
+        padding: 0.85rem 0.65rem;
+        border-radius: 14px;
+        text-align: center;
+    }
+
+    .hero-highlights strong {
+        font-size: 1rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .hero-highlights span {
+        font-size: 0.72rem;
+        line-height: 1.3;
+    }
+
+    .hero-btns {
+        gap: 0.7rem;
+    }
+
+    .hero-btns .btn {
+        min-height: 46px;
+        padding: 0.75rem 1rem;
+        font-size: 0.82rem;
+        width: 100%;
+    }
+
+    /* ── 3. PROJECT SNAPSHOT (hero-card) ── */
+    .hero-card {
+        padding: 1.5rem;
+        border-radius: 22px;
+        max-width: 100%;
+    }
+
+    .hero-card h2 {
+        font-size: 1.75rem;
+        margin: 0.6rem 0 0.8rem;
+    }
+
+    .hero-card-list {
+        gap: 0.7rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .hero-card-list li {
+        gap: 0.6rem;
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+
+    .hero-card-list i {
+        margin-top: 0.2rem;
+        flex-shrink: 0;
+    }
+
+    .hero-card-footer {
+        padding-top: 1rem;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .hero-card-footer span {
+        font-size: 0.7rem;
+    }
+
+    .hero-card-footer a {
+        font-size: 0.9rem;
+    }
+
+    /* ── 4. PROJECT FACTS (info cards) ── */
+    .quick-info-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+    }
+
+    .info-card {
+        padding: 1.1rem;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 80px;
+    }
+
+    .info-card h4 {
+        font-size: 0.7rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .info-card p {
+        font-size: 0.9rem;
+    }
+
+    /* ── 5. LIVING REDEFINED (features layout) ── */
+    .features-layout,
+    .reverse-layout {
+        gap: 2rem;
+    }
+
+    .features-content .section-title {
+        margin-bottom: 0.6rem;
+    }
+
+    .features-content .section-desc {
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-points {
+        gap: 0.75rem;
+        margin: 1.2rem 0 1.5rem;
+    }
+
+    .feature-point {
+        padding: 1rem;
+        border-radius: 16px;
+        gap: 0.85rem;
+    }
+
+    .feature-point i {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
+
+    .feature-point h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .feature-point p {
         font-size: 0.88rem;
     }
 
-    /* MOBILE: Scale down hero heading more aggressively */
-    .hero-copy h1 {
-        font-size: clamp(2rem, 6vw, 3.2rem);
-    }
-
-    .hero-copy p,
-    .section-desc {
-        font-size: 1rem;
-    }
-
-    /* MOBILE: Scale down section titles to prevent overflow */
-    .section-title {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
-    }
-
-    .hero-highlights {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-btns,
-    .tabs {
-        width: 100%;
-    }
-
-    .btn,
-    .tab-btn {
-        width: 100%;
-    }
-
+    /* ── 6. BUILDING IMAGE ── */
     .feature-img {
-        height: 320px;
-        border-radius: 24px;
+        height: 280px;
+        border-radius: 20px;
+        box-shadow: 12px 12px 0 rgba(186, 145, 84, 0.18), var(--shadow-md);
     }
 
-    .gallery-item {
-        min-height: 260px;
+    .alt-shadow {
+        box-shadow: -12px 12px 0 rgba(113, 144, 107, 0.16), var(--shadow-md);
     }
 
-    .pricing-wrapper {
-        padding: 0.7rem;
-    }
-
-    th,
-    td {
-        min-width: 170px;
-        padding: 1rem 0.9rem;
-    }
-
-    .contact-layout,
-    .hero-card,
-    .enquiry-form,
-    .test-card,
-    .amenity-card,
-    .step-card,
-    .price-side-card,
-    .faq-item,
-    .info-card,
-    .con-item {
-        border-radius: 22px;
-    }
-
-    .floating-cta {
-        right: 0.85rem;
-        bottom: 1.25rem;
-        width: auto;
-        left: auto;
-    }
-
-    .floating-whatsapp {
-        width: 64px;
-        height: 64px;
-        right: 1rem;
-        bottom: 1rem;
-    }
-
-    .floating-whatsapp i {
-        font-size: 3rem;
-    }
-
-    .floating-whatsapp::before {
-        width: 56px;
-        height: 56px;
-        box-shadow: 0 0 0 8px rgba(37, 211, 102, 0);
-    }
-
-    .map-card {
+    /* ── Carousel ── */
+    .carousel-slide {
         min-height: 220px;
     }
 
-    .map-card-overlay {
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+
+    .carousel-prev { left: 0.5rem; }
+    .carousel-next { right: 0.5rem; }
+
+    .gallery-overlay h4 {
+        font-size: 1.3rem;
+    }
+
+    .gallery-overlay {
         padding: 1rem;
+    }
+
+    /* ── Connectivity ── */
+    .con-grid {
+        gap: 0.6rem;
+    }
+
+    .con-item {
+        padding: 0.9rem 1rem;
+        border-radius: 16px;
+        gap: 0.75rem;
+        align-items: center;
+    }
+
+    .con-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+    }
+
+    .con-text h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.1rem;
+    }
+
+    .con-text p {
+        font-size: 0.85rem;
+    }
+
+    /* ── Tabs / Floor Plans ── */
+    .tabs {
+        display: flex;
+        width: 100%;
+        gap: 0.5rem;
+        padding: 0.4rem;
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+        flex: 1;
+        text-align: center;
+        min-height: 42px;
+        padding: 0.65rem 0.5rem;
+        font-size: 0.82rem;
+        border-radius: 12px;
+    }
+
+    .plan-shell {
+        padding: 0.7rem;
+        border-radius: 20px;
+    }
+
+    .plan-shell img {
+        border-radius: 16px;
+        max-height: 400px;
+    }
+
+    /* ── Pricing ── */
+    .pricing-wrapper {
+        padding: 0.5rem;
+        border-radius: 16px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    th, td {
+        min-width: 90px;
+        padding: 0.7rem 0.5rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    th {
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+    }
+
+    th:first-child { border-top-left-radius: 12px; }
+    th:last-child { border-top-right-radius: 12px; }
+
+    .price-text {
+        font-size: 0.78rem;
+    }
+
+    /* ── Why Buy / Price Side Card ── */
+    .price-side-card {
+        padding: 1.3rem;
+        border-radius: 18px;
+    }
+
+    .price-side-card h3 {
+        font-size: 1.5rem;
+        margin: 0.6rem 0 0.8rem;
+    }
+
+    .price-side-card ul {
+        gap: 0.65rem;
+        margin: 0.8rem 0 1.2rem;
+    }
+
+    .price-side-card li {
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        align-items: flex-start;
+    }
+
+    .price-side-card li i {
+        flex-shrink: 0;
+        margin-top: 0.15rem;
+    }
+
+    .price-side-card .btn {
+        width: 100%;
+        min-height: 46px;
+        font-size: 0.82rem;
+    }
+
+    .pricing-note {
+        font-size: 0.82rem;
+        margin-top: 0.8rem;
+    }
+
+    /* ── Amenities (equal height via flexbox) ── */
+    .amenities-grid {
+        gap: 0.6rem;
+    }
+
+    .amenity-card {
+        padding: 1.2rem;
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .amenity-card i {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        font-size: 1.05rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .amenity-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .amenity-card p {
+        font-size: 0.85rem;
+        flex-grow: 1;
+    }
+
+    /* ── Developer Trust / Metrics ── */
+    .metric-row {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .metric-card {
+        padding: 1rem;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .metric-card strong {
+        font-size: 1.45rem;
+        white-space: nowrap;
+    }
+
+    .metric-card span {
+        font-size: 0.85rem;
+    }
+
+    /* ── Testimonial Carousel (mobile) ── */
+    .testimonial-carousel {
+        border-radius: 20px;
+    }
+
+    .testimonial-slide {
+        padding: 1.6rem 1.3rem 1.3rem;
+    }
+
+    .testimonial-slide i {
+        font-size: 1.5rem;
+    }
+
+    .test-content {
+        font-size: 0.92rem;
+        margin: 0.75rem 0 1rem;
+        line-height: 1.65;
+    }
+
+    .test-author {
+        font-size: 0.9rem;
+    }
+
+    .testimonial-dots {
+        padding: 0 1.3rem 1.2rem;
+        gap: 0.4rem;
+    }
+
+    /* ── Steps / Booking Process ── */
+    .steps-container {
+        gap: 0.6rem;
+    }
+
+    .step-card {
+        padding: 1.3rem 1.1rem 1.1rem;
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .step-num {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .step-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .step-card p {
+        font-size: 0.88rem;
+        line-height: 1.55;
+    }
+
+    /* ── FAQ ── */
+    .faq-container {
+        max-width: 100%;
+        gap: 0.5rem;
+    }
+
+    .faq-item {
+        border-radius: 16px;
+        margin-bottom: 0.5rem;
+    }
+
+    .faq-question {
+        padding: 0.95rem 1rem;
+        font-size: 0.86rem;
+        gap: 0.5rem;
+    }
+
+    .faq-question i {
+        font-size: 0.7rem;
+        flex-shrink: 0;
+    }
+
+    .faq-answer p {
+        padding: 0 1rem;
+        font-size: 0.86rem;
+        line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer p {
+        padding: 0 1rem 1rem;
+    }
+
+    /* ── Contact Section ── */
+    .contact-layout {
+        padding: 0.75rem;
+        border-radius: 20px;
+        gap: 0.75rem;
+    }
+
+    .contact-info {
+        padding: 1.1rem;
+    }
+
+    .contact-info h2,
+    .footer-logo {
+        font-size: 1.6rem;
+    }
+
+    .contact-details {
+        gap: 0.65rem;
+        margin-top: 1rem;
+    }
+
+    .contact-link {
+        font-size: 0.88rem;
+        gap: 0.6rem;
+    }
+
+    .contact-link i {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
+
+    /* ── Enquiry Form ── */
+    .enquiry-form {
+        padding: 1.3rem;
+        border-radius: 18px;
+    }
+
+    .enquiry-form .eyebrow {
+        font-size: 0.7rem;
+    }
+
+    .enquiry-form h3 {
+        font-size: 1.45rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 0.85rem;
+    }
+
+    .form-group label {
+        font-size: 0.78rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .form-group input {
+        padding: 0.85rem 1rem;
+        font-size: 0.9rem;
+        border-radius: 14px;
+    }
+
+    .btn-full {
+        width: 100%;
+        min-height: 48px;
+        font-size: 0.88rem;
+        border-radius: 14px;
+        margin-top: 0.5rem;
+    }
+
+    /* ── Footer ── */
+    .footer-bar {
+        padding: 0.8rem 0 5rem;
+    }
+
+    .footer-shell {
+        border-radius: 18px;
+        padding: 1rem 1.1rem;
+        text-align: center;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .footer-shell p {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    /* ── WhatsApp floating button ── */
+    .floating-whatsapp {
+        width: 56px;
+        height: 56px;
+        right: 0.75rem;
+        bottom: 0.75rem;
+    }
+
+    .floating-whatsapp i {
+        font-size: 2.6rem;
+    }
+
+    .floating-whatsapp::before {
+        width: 48px;
+        height: 48px;
+    }
+
+    .floating-cta {
+        right: 0.75rem;
+        bottom: 0.75rem;
+    }
+
+    /* ── Map ── */
+    .map-card {
+        min-height: 200px;
+    }
+
+    .map-card-overlay {
+        padding: 0.85rem;
     }
 
     .map-location-pill {
         max-width: 100%;
-        font-size: 0.9rem;
+        font-size: 0.82rem;
+        padding: 0.7rem 0.9rem;
+    }
+
+    .map-location-pill i {
+        width: 32px;
+        height: 32px;
     }
 
     .map-directions-btn {
         align-self: flex-start;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        padding: 0.7rem 0.9rem;
     }
 
-    /* MOBILE: Updated modal for portrait aspect ratio */
-
+    /* ── Modal ── */
     .modal-close {
-        top: 1rem;
-        right: 1rem;
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
+        top: 0.85rem;
+        right: 0.85rem;
+        width: 34px;
+        height: 34px;
+        font-size: 0.95rem;
+    }
+
+    /* ── General border-radius tightening ── */
+    .gallery-carousel {
+        border-radius: 20px;
     }
 }
 

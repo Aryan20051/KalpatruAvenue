@@ -285,25 +285,34 @@
                 <h2 class="section-title">A quick look at the lifestyle mood of the project</h2>
             </div>
 
-            <div class="gallery-grid">
-                <article class="gallery-item reveal">
-                    <img src="building.jpg" alt="Project exterior">
-                    <div class="gallery-overlay">
-                        <h4>Signature facade</h4>
-                    </div>
-                </article>
-                <article class="gallery-item reveal">
-                    <img src="garden.jpg" alt="Landscaped garden">
-                    <div class="gallery-overlay">
-                        <h4>Green open spaces</h4>
-                    </div>
-                </article>
-                <article class="gallery-item reveal">
-                    <img src="gym.jpg" alt="Modern gym">
-                    <div class="gallery-overlay">
-                        <h4>Fitness amenities</h4>
-                    </div>
-                </article>
+            <div class="gallery-carousel reveal" id="gallery-carousel">
+                <div class="carousel-track">
+                    <article class="carousel-slide">
+                        <img src="building.jpg" alt="Project exterior">
+                        <div class="gallery-overlay">
+                            <h4>Signature facade</h4>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <img src="garden.jpg" alt="Landscaped garden">
+                        <div class="gallery-overlay">
+                            <h4>Green open spaces</h4>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <img src="gym.jpg" alt="Modern gym">
+                        <div class="gallery-overlay">
+                            <h4>Fitness amenities</h4>
+                        </div>
+                    </article>
+                </div>
+                <button class="carousel-btn carousel-prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn carousel-next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                    <button class="carousel-dot" data-slide="1" aria-label="Go to slide 2"></button>
+                    <button class="carousel-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                </div>
             </div>
         </div>
     </section>
@@ -461,22 +470,29 @@
                 <h2 class="section-title">What interested homebuyers appreciate most</h2>
             </div>
 
-            <div class="testimonial-grid">
-                <article class="test-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p class="test-content">Smooth booking support, well-planned flats, and a reassuring level of transparency throughout the visit.</p>
-                    <p class="test-author">Anita Mehra</p>
-                </article>
-                <article class="test-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p class="test-content">The pricing felt genuine and the location has strong growth potential without losing residential comfort.</p>
-                    <p class="test-author">Rajesh Patil</p>
-                </article>
-                <article class="test-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p class="test-content">The sample flat and amenity planning made the project feel practical for family living from day one.</p>
-                    <p class="test-author">Sonal Desai</p>
-                </article>
+            <div class="testimonial-carousel reveal" id="testimonial-carousel">
+                <div class="testimonial-track">
+                    <article class="testimonial-slide">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-content">Smooth booking support, well-planned flats, and a reassuring level of transparency throughout the visit.</p>
+                        <p class="test-author">Anita Mehra</p>
+                    </article>
+                    <article class="testimonial-slide">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-content">The pricing felt genuine and the location has strong growth potential without losing residential comfort.</p>
+                        <p class="test-author">Rajesh Patil</p>
+                    </article>
+                    <article class="testimonial-slide">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-content">The sample flat and amenity planning made the project feel practical for family living from day one.</p>
+                        <p class="test-author">Sonal Desai</p>
+                    </article>
+                </div>
+                <div class="testimonial-dots">
+                    <button class="carousel-dot active" data-tslide="0" aria-label="Testimonial 1"></button>
+                    <button class="carousel-dot" data-tslide="1" aria-label="Testimonial 2"></button>
+                    <button class="carousel-dot" data-tslide="2" aria-label="Testimonial 3"></button>
+                </div>
             </div>
         </div>
     </section>
