@@ -100,6 +100,56 @@
         </div>
     </header>
 
+    <!-- ════════════════════════════════════════════════════════
+         NEW SECTION: MahaRERA Registered Trust Banner
+         Located BELOW Hero, ABOVE Project Facts
+    ════════════════════════════════════════════════════════ -->
+    <section id="rera" class="rera-section section-frame">
+        <div class="container">
+            <!-- Decorative ornamental divider -->
+            <div class="rera-ornament" aria-hidden="true">
+                <span class="rera-ornament-line"></span>
+                <span class="rera-ornament-diamond"><i class="fas fa-gem"></i></span>
+                <span class="rera-ornament-line"></span>
+            </div>
+
+            <div class="rera-content animate-up">
+                <span class="section-tag">Trust & Transparency</span>
+                <h2 class="section-title">Kalpataru Avenue Naigaon RERA Registered Project</h2>
+                <p class="section-desc rera-desc">
+                    Kalpataru Avenue is a fully MahaRERA-registered residential project, ensuring complete legal transparency for every buyer. 
+                    With verified land titles, clear documentation, and a commitment to timely delivery, the project upholds all regulatory 
+                    standards mandated by the Real Estate Regulatory Authority of Maharashtra. Buyers can invest with absolute confidence, 
+                    knowing their rights are fully protected under RERA guidelines.
+                </p>
+
+                <!-- Trust Badges: Uniform Card Grid (Logo + QR Code + RERA Number) -->
+                <div class="rera-badges">
+                    <div class="rera-badge-card">
+                        <img src="maharera-logo.png" alt="MahaRERA Official Logo" class="rera-badge-img" loading="lazy">
+                        <span class="rera-badge-label">MahaRERA Certified</span>
+                    </div>
+                    <div class="rera-badge-card">
+                        <img src="rera-qr.png" alt="RERA QR Code" class="rera-badge-img" loading="lazy">
+                        <span class="rera-badge-label">Scan to Verify</span>
+                    </div>
+                    <div class="rera-badge-card">
+                        <div class="rera-number-icon"><i class="fas fa-certificate"></i></div>
+                        <span class="rera-badge-label">MahaRERA Reg. No:</span>
+                        <strong class="rera-number-value">P99000000000</strong>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a href="javascript:void(0)" class="btn btn-outline-gold enquire-modal-trigger">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>Payment Plan</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- END: MahaRERA Registered Trust Banner -->
+
     <section class="quick-info section-frame">
         <div class="container">
             <div class="section-heading compact-heading animate-up">
@@ -285,25 +335,34 @@
                 <h2 class="section-title">A quick look at the lifestyle mood of the project</h2>
             </div>
 
-            <div class="gallery-grid">
-                <article class="gallery-item reveal">
-                    <img src="building.jpg" alt="Project exterior">
-                    <div class="gallery-overlay">
-                        <h4>Signature facade</h4>
-                    </div>
-                </article>
-                <article class="gallery-item reveal">
-                    <img src="garden.jpg" alt="Landscaped garden">
-                    <div class="gallery-overlay">
-                        <h4>Green open spaces</h4>
-                    </div>
-                </article>
-                <article class="gallery-item reveal">
-                    <img src="gym.jpg" alt="Modern gym">
-                    <div class="gallery-overlay">
-                        <h4>Fitness amenities</h4>
-                    </div>
-                </article>
+            <div class="gallery-carousel reveal" id="gallery-carousel">
+                <div class="carousel-track">
+                    <article class="carousel-slide">
+                        <img src="building.jpg" alt="Project exterior">
+                        <div class="gallery-overlay">
+                            <h4>Signature facade</h4>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <img src="garden.jpg" alt="Landscaped garden">
+                        <div class="gallery-overlay">
+                            <h4>Green open spaces</h4>
+                        </div>
+                    </article>
+                    <article class="carousel-slide">
+                        <img src="gym.jpg" alt="Modern gym">
+                        <div class="gallery-overlay">
+                            <h4>Fitness amenities</h4>
+                        </div>
+                    </article>
+                </div>
+                <button class="carousel-btn carousel-prev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn carousel-next" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                    <button class="carousel-dot" data-slide="1" aria-label="Go to slide 2"></button>
+                    <button class="carousel-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                </div>
             </div>
         </div>
     </section>
@@ -461,22 +520,29 @@
                 <h2 class="section-title">What interested homebuyers appreciate most</h2>
             </div>
 
-            <div class="testimonial-grid">
-                <article class="test-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p class="test-content">Smooth booking support, well-planned flats, and a reassuring level of transparency throughout the visit.</p>
-                    <p class="test-author">Anita Mehra</p>
-                </article>
-                <article class="test-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p class="test-content">The pricing felt genuine and the location has strong growth potential without losing residential comfort.</p>
-                    <p class="test-author">Rajesh Patil</p>
-                </article>
-                <article class="test-card reveal">
-                    <i class="fas fa-quote-left"></i>
-                    <p class="test-content">The sample flat and amenity planning made the project feel practical for family living from day one.</p>
-                    <p class="test-author">Sonal Desai</p>
-                </article>
+            <div class="testimonial-carousel reveal" id="testimonial-carousel">
+                <div class="testimonial-track">
+                    <article class="testimonial-slide">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-content">Smooth booking support, well-planned flats, and a reassuring level of transparency throughout the visit.</p>
+                        <p class="test-author">Anita Mehra</p>
+                    </article>
+                    <article class="testimonial-slide">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-content">The pricing felt genuine and the location has strong growth potential without losing residential comfort.</p>
+                        <p class="test-author">Rajesh Patil</p>
+                    </article>
+                    <article class="testimonial-slide">
+                        <i class="fas fa-quote-left"></i>
+                        <p class="test-content">The sample flat and amenity planning made the project feel practical for family living from day one.</p>
+                        <p class="test-author">Sonal Desai</p>
+                    </article>
+                </div>
+                <div class="testimonial-dots">
+                    <button class="carousel-dot active" data-tslide="0" aria-label="Testimonial 1"></button>
+                    <button class="carousel-dot" data-tslide="1" aria-label="Testimonial 2"></button>
+                    <button class="carousel-dot" data-tslide="2" aria-label="Testimonial 3"></button>
+                </div>
             </div>
         </div>
     </section>
@@ -577,69 +643,80 @@
         </div>
     </section>
 
+    <!-- ════════════════════════════════════════════════════════
+         REDESIGNED: Contact & Google Maps — Full-Width Layout
+         Uses .contact-wide-container (90% width, max-width: 1600px)
+         Grid: 1.2fr (info + map) | 1fr (enquiry form)
+    ════════════════════════════════════════════════════════ -->
     <section id="contact" class="contact-section section-frame">
-        <div class="container contact-layout">
-            <div class="contact-info reveal">
-                <span class="section-tag">Contact</span>
-                <div class="footer-logo">Kalpatru Avenue</div>
-                <!-- NEW: Premium map card with embedded Google Maps and personalized overlays -->
-                <div class="map-card">
-                    <iframe
-                        class="map-frame"
-                        src="https://maps.google.com/maps?q=Naigaon%20East%2C%20Maharashtra&z=14&output=embed"
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Kalpatru Avenue location map">
-                    </iframe>
-                    <div class="map-card-overlay">
-                        <div class="map-location-pill">
-                            <i class="fas fa-map-pin"></i>
-                            <span>Kalpatru Avenue, Naigaon East</span>
+        <div class="contact-wide-container">
+            <div class="contact-layout">
+                <!-- LEFT COLUMN: Contact Info + Embedded Google Map -->
+                <div class="contact-info reveal">
+                    <span class="section-tag">Contact</span>
+                    <div class="footer-logo">Kalpatru Avenue</div>
+
+                    <div class="contact-details">
+                        <div class="contact-link">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Naigaon East, Mumbai</span>
                         </div>
-                        <a href="https://maps.google.com/?q=Naigaon%20East%2C%20Maharashtra" class="map-directions-btn" target="_blank" rel="noopener noreferrer">
-                            <span>Get Directions</span>
-                            <i class="fas fa-arrow-up-right-from-square"></i>
-                        </a>
+                        <div class="contact-link">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 9860949793</span>
+                        </div>
+                        <div class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@hpinfra.in</span>
+                        </div>
+                    </div>
+
+                    <!-- Embedded Google Map -->
+                    <div class="map-card">
+                        <iframe
+                            class="map-frame"
+                            src="https://maps.google.com/maps?q=Kalpatru%20Avenue%2C%20Naigaon%20East%2C%20Maharashtra&z=14&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Kalpatru Avenue location map">
+                        </iframe>
+                        <div class="map-card-overlay">
+                            <div class="map-location-pill">
+                                <i class="fas fa-map-pin"></i>
+                                <span>Kalpatru Avenue, Naigaon East</span>
+                            </div>
+                            <a href="https://maps.google.com/?q=Kalpatru%20Avenue%2C%20Naigaon%20East%2C%20Maharashtra" class="map-directions-btn" target="_blank" rel="noopener noreferrer">
+                                <span>Get Directions</span>
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="contact-details">
-                    <div class="contact-link">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Naigaon East, Mumbai</span>
-                    </div>
-                    <div class="contact-link">
-                        <i class="fas fa-phone"></i>
-                        <span>+91 9860949793</span>
-                    </div>
-                    <div class="contact-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>info@hpinfra.in</span>
-                    </div>
+                <!-- RIGHT COLUMN: Enquiry Form -->
+                <div class="enquiry-form reveal">
+                    <p class="eyebrow">Register your interest</p>
+                    <h3>Request a callback</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input id="name" type="text" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input id="mobile" type="tel" placeholder="Enter your number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input id="email" type="email" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn-full">Send enquiry</button>
+                    </form>
                 </div>
-            </div>
-
-            <div class="enquiry-form reveal">
-                <p class="eyebrow">Register your interest</p>
-                <h3>Request a callback</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input id="name" type="text" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mobile">Mobile Number</label>
-                        <input id="mobile" type="tel" placeholder="Enter your number" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input id="email" type="email" placeholder="Enter your email" required>
-                    </div>
-                    <button type="submit" class="btn-full">Send enquiry</button>
-                </form>
             </div>
         </div>
     </section>
+    <!-- END: Redesigned Contact & Google Maps -->
 
     <footer class="footer-bar">
         <div class="container footer-shell">
