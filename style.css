@@ -720,8 +720,13 @@ section {
     transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-prev { left: 1rem; }
-.carousel-next { right: 1rem; }
+.carousel-prev {
+    left: 1rem;
+}
+
+.carousel-next {
+    right: 1rem;
+}
 
 .carousel-dots {
     position: absolute;
@@ -1569,11 +1574,13 @@ tbody tr:last-child td {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
         opacity: 1;
     }
+
     70% {
         transform: translate(-50%, -50%) scale(1.08);
         box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
         opacity: 0.75;
     }
+
     100% {
         transform: translate(-50%, -50%) scale(1.14);
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
@@ -1608,9 +1615,11 @@ tbody tr:last-child td {
 /* FIXED: Modal content box - forces sleek portrait aspect ratio */
 .modal-content {
     position: relative;
-    width: 90%; 
-    min-width: auto !important; /* This kills the stretching bug */
-    max-width: 380px !important; /* This locks in the sleek portrait width */
+    width: 90%;
+    min-width: auto !important;
+    /* This kills the stretching bug */
+    max-width: 380px !important;
+    /* This locks in the sleek portrait width */
     margin: 0 auto;
     border-radius: var(--radius-lg);
     background: rgba(255, 253, 248, 0.98);
@@ -1703,6 +1712,7 @@ tbody tr:last-child td {
 }
 
 @media (max-width: 1100px) {
+
     .hero-grid,
     .features-layout,
     .reverse-layout,
@@ -1912,8 +1922,10 @@ tbody tr:last-child td {
 }
 
 @media (max-width: 640px) {
+
     /* ── Global: safe margins, no horizontal scroll ── */
-    html, body {
+    html,
+    body {
         overflow-x: hidden;
     }
 
@@ -2000,7 +2012,8 @@ tbody tr:last-child td {
         font-size: 0.95rem;
     }
 
-    .section-tag, .eyebrow {
+    .section-tag,
+    .eyebrow {
         font-size: 0.72rem;
     }
 
@@ -2242,8 +2255,13 @@ tbody tr:last-child td {
         font-size: 0.8rem;
     }
 
-    .carousel-prev { left: 0.5rem; }
-    .carousel-next { right: 0.5rem; }
+    .carousel-prev {
+        left: 0.5rem;
+    }
+
+    .carousel-next {
+        right: 0.5rem;
+    }
 
     .gallery-overlay h4 {
         font-size: 1.3rem;
@@ -2318,7 +2336,8 @@ tbody tr:last-child td {
         -webkit-overflow-scrolling: touch;
     }
 
-    th, td {
+    th,
+    td {
         min-width: 90px;
         padding: 0.7rem 0.5rem;
         font-size: 0.75rem;
@@ -2330,8 +2349,13 @@ tbody tr:last-child td {
         letter-spacing: 0.08em;
     }
 
-    th:first-child { border-top-left-radius: 12px; }
-    th:last-child { border-top-right-radius: 12px; }
+    th:first-child {
+        border-top-left-radius: 12px;
+    }
+
+    th:last-child {
+        border-top-right-radius: 12px;
+    }
 
     .price-text {
         font-size: 0.78rem;
@@ -2526,11 +2550,11 @@ tbody tr:last-child td {
         gap: 0.75rem;
     }
 
-    .contact-wide-container {
+    <<<<<<< HEAD .contact-wide-container {
         width: calc(100% - 2rem);
     }
 
-    .contact-info {
+    =======>>>>>>>48b3e6cfe0383ea92875a41563a20ad3c53dbda1 .contact-info {
         padding: 1.1rem;
     }
 
