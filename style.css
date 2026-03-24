@@ -1695,6 +1695,118 @@ tbody tr:last-child td {
     letter-spacing: 0.12em;
 }
 
+/* ═══════════════════════════════════════════════════════
+   NEW: Custom reCAPTCHA v2 Mockup Styles
+   ═══════════════════════════════════════════════════════ */
+.captcha-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    margin-bottom: 1.25rem;
+    background: #f9f9f9;
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.captcha-box:hover {
+    background: #f0f0f0;
+    border-color: #bbb;
+}
+
+.captcha-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.captcha-checkbox {
+    width: 26px;
+    height: 26px;
+    border-radius: 3px;
+    border: 2px solid #c1c1c1;
+    background: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.captcha-checkbox i {
+    font-size: 0.7rem;
+    color: transparent;
+    transition: color 0.15s ease;
+}
+
+/* Checked state */
+.captcha-box.checked .captcha-checkbox {
+    border-color: #4285f4;
+    background: #4285f4;
+}
+
+.captcha-box.checked .captcha-checkbox i {
+    color: #ffffff;
+}
+
+.captcha-label {
+    font-family: "Roboto", "Manrope", Arial, sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #555;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.captcha-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    flex-shrink: 0;
+}
+
+.captcha-logo {
+    opacity: 0.7;
+}
+
+.captcha-brand {
+    font-family: "Roboto", "Manrope", Arial, sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.captcha-terms {
+    font-family: "Roboto", "Manrope", Arial, sans-serif;
+    font-size: 0.52rem;
+    color: #999;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* Modal-form CAPTCHA slight adjustments */
+.modal-form .captcha-box {
+    margin-bottom: 1rem;
+    padding: 0.75rem 0.85rem;
+}
+
+.modal-form .captcha-checkbox {
+    width: 24px;
+    height: 24px;
+}
+
+.modal-form .captcha-label {
+    font-size: 0.82rem;
+}
+/* END: reCAPTCHA Mockup Styles */
+
 .footer-bar {
     padding: 1.4rem 0 4rem;
 }
@@ -1733,15 +1845,18 @@ tbody tr:last-child td {
     text-transform: uppercase;
 }
 
-/* NEW: WhatsApp floating button and pulsing border animation */
+/* ═══════════════════════════════════════════════════════
+   REDESIGNED: High-Contrast WhatsApp Floating Button
+   Solid green circle + white icon + pulse + bob animation
+   ═══════════════════════════════════════════════════════ */
 .floating-whatsapp {
-    width: 72px;
-    height: 72px;
+    width: 64px;
+    height: 64px;
     min-height: 0;
     padding: 0;
     border-radius: 50%;
-    background: transparent;
-    box-shadow: none;
+    background: #25d366;
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
     position: fixed;
     right: 1.5rem;
     bottom: 1.5rem;
@@ -1749,59 +1864,55 @@ tbody tr:last-child td {
     align-items: center;
     justify-content: center;
     z-index: 999;
+    animation: whatsapp-pulse 2s ease-out infinite, whatsapp-float 3s ease-in-out infinite;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .floating-whatsapp i {
-    font-size: 3.55rem;
-    color: #25d366;
+    font-size: 2rem;
+    color: #ffffff;
     line-height: 1;
     z-index: 2;
-    transition: transform 0.2s ease, filter var(--transition);
+    transition: transform 0.2s ease;
 }
 
+/* Remove the old pulsing border pseudo-element */
 .floating-whatsapp::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 62px;
-    height: 62px;
-    border: 2px solid rgba(37, 211, 102, 0.9);
-    border-radius: 50%;
-    animation: whatsapp-pulse 2s infinite;
-    z-index: 1;
+    display: none;
+}
+
+.floating-whatsapp:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 10px 32px rgba(37, 211, 102, 0.55);
 }
 
 .floating-whatsapp:hover i {
-    transform: scale(1.1);
-    filter: drop-shadow(0 8px 18px rgba(37, 211, 102, 0.34));
+    transform: scale(1.12);
 }
 
-.floating-whatsapp:hover::before {
-    animation-duration: 1.2s;
-}
-
-/* WhatsApp border pulse keyframes */
+/* WhatsApp pulse: solid green shadow outward */
 @keyframes whatsapp-pulse {
     0% {
-        transform: translate(-50%, -50%) scale(0.92);
-        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
     }
-
     70% {
-        transform: translate(-50%, -50%) scale(1.08);
-        box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
-        opacity: 0.75;
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
     }
-
     100% {
-        transform: translate(-50%, -50%) scale(1.14);
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-        opacity: 0;
     }
 }
+
+/* WhatsApp float: subtle continuous bob animation */
+@keyframes whatsapp-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+/* END: WhatsApp Button Redesign */
 
 /* NEW: Modal overlay styling */
 .modal-overlay {
@@ -2860,11 +2971,11 @@ tbody tr:last-child td {
         gap: 0.75rem;
     }
 
-    <<<<<<< HEAD .contact-wide-container {
+    .contact-wide-container {
         width: calc(100% - 2rem);
     }
 
-    =======>>>>>>>48b3e6cfe0383ea92875a41563a20ad3c53dbda1 .contact-info {
+    .contact-info {
         padding: 1.1rem;
     }
 
@@ -2946,21 +3057,44 @@ tbody tr:last-child td {
         line-height: 1.5;
     }
 
-    /* ── WhatsApp floating button ── */
+    /* ── WhatsApp floating button (mobile) ── */
     .floating-whatsapp {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
         right: 0.75rem;
         bottom: 0.75rem;
     }
 
     .floating-whatsapp i {
-        font-size: 2.6rem;
+        font-size: 1.6rem;
     }
 
-    .floating-whatsapp::before {
-        width: 48px;
-        height: 48px;
+    /* ── CAPTCHA (mobile) ── */
+    .captcha-box {
+        padding: 0.7rem 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .captcha-checkbox {
+        width: 22px;
+        height: 22px;
+    }
+
+    .captcha-label {
+        font-size: 0.78rem;
+    }
+
+    .captcha-logo {
+        width: 22px;
+        height: 22px;
+    }
+
+    .captcha-brand {
+        font-size: 0.5rem;
+    }
+
+    .captcha-terms {
+        font-size: 0.44rem;
     }
 
     .floating-cta {
