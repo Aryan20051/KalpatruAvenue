@@ -189,6 +189,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const tTrack = tCarousel.querySelector(".testimonial-track");
         const tSlides = tCarousel.querySelectorAll(".testimonial-slide");
         const tDots = tCarousel.querySelectorAll("[data-tslide]");
+        const tPrevBtn = tCarousel.querySelector(".testimonial-prev");
+        const tNextBtn = tCarousel.querySelector(".testimonial-next");
+        const tProgressBar = tCarousel.querySelector(".testimonial-progress-bar");
+        const tCounter = tCarousel.querySelector(".testimonial-counter");
         let tCurrent = 0;
         let tTimer = null;
 
@@ -196,11 +200,31 @@ document.addEventListener("DOMContentLoaded", () => {
             tCurrent = ((index % tSlides.length) + tSlides.length) % tSlides.length;
             tTrack.style.transform = `translateX(-${tCurrent * 100}%)`;
             tDots.forEach((d, i) => d.classList.toggle("active", i === tCurrent));
+            tSlides.forEach((slide, i) => {
+                const isActive = i === tCurrent;
+                slide.classList.toggle("is-active", isActive);
+                slide.setAttribute("aria-hidden", String(!isActive));
+            });
+
+            if (tProgressBar) {
+                tProgressBar.style.width = `${((tCurrent + 1) / tSlides.length) * 100}%`;
+            }
+
+            if (tCounter) {
+                tCounter.textContent = `${String(tCurrent + 1).padStart(2, "0")} / ${String(tSlides.length).padStart(2, "0")}`;
+            }
         };
 
         const tNext = () => tGoTo(tCurrent + 1);
-        const tStartAuto = () => { tTimer = setInterval(tNext, 5000); };
+        const tPrev = () => tGoTo(tCurrent - 1);
+        const tStartAuto = () => {
+            clearInterval(tTimer);
+            tTimer = setInterval(tNext, 3600);
+        };
         const tStopAuto = () => { clearInterval(tTimer); };
+
+        tNextBtn?.addEventListener("click", () => { tStopAuto(); tNext(); tStartAuto(); });
+        tPrevBtn?.addEventListener("click", () => { tStopAuto(); tPrev(); tStartAuto(); });
 
         tDots.forEach((dot) => {
             dot.addEventListener("click", () => { tStopAuto(); tGoTo(+dot.dataset.tslide); tStartAuto(); });
@@ -213,10 +237,11 @@ document.addEventListener("DOMContentLoaded", () => {
         tCarousel.addEventListener("touchstart", (e) => { tTouchX = e.changedTouches[0].clientX; tStopAuto(); }, { passive: true });
         tCarousel.addEventListener("touchend", (e) => {
             const diff = tTouchX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) { diff > 0 ? tGoTo(tCurrent + 1) : tGoTo(tCurrent - 1); }
+            if (Math.abs(diff) > 50) { diff > 0 ? tNext() : tPrev(); }
             tStartAuto();
         }, { passive: true });
 
+        tGoTo(0);
         tStartAuto();
     }
 });
