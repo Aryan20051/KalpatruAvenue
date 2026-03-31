@@ -349,40 +349,21 @@
             </div>
 
             <div class="gallery-carousel reveal" id="gallery-carousel">
-                <div class="carousel-track">
-                    <article class="carousel-slide">
-                        <img src="building.jpg" alt="Project exterior">
-                        <div class="gallery-overlay">
-                            <h4>Signature facade</h4>
-                        </div>
-                    </article>
-                    <article class="carousel-slide">
-                        <img src="garden.jpg" alt="Landscaped garden">
-                        <div class="gallery-overlay">
-                            <h4>Green open spaces</h4>
-                        </div>
-                    </article>
-                    <article class="carousel-slide">
-                        <img src="gym.jpg" alt="Modern gym">
-                        <div class="gallery-overlay">
-                            <h4>Fitness amenities</h4>
-                        </div>
-                    </article>
+                <div class="carousel-track" id="gallery-track">
+                    <!-- Slides injected by JS -->
                 </div>
                 <button class="carousel-btn carousel-prev" aria-label="Previous slide"><i
                         class="fas fa-chevron-left"></i></button>
                 <button class="carousel-btn carousel-next" aria-label="Next slide"><i
                         class="fas fa-chevron-right"></i></button>
-                <div class="carousel-dots">
-                    <button class="carousel-dot active" data-slide="0" aria-label="Go to slide 1"></button>
-                    <button class="carousel-dot" data-slide="1" aria-label="Go to slide 2"></button>
-                    <button class="carousel-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                <div class="carousel-dots" id="gallery-dots">
+                    <!-- Dots injected by JS -->
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="floorplans" class="bg-panel section-frame">
+    <section id="floorplans" class="bg-panel section-frame floor-plan-section">
         <div class="container">
             <div class="section-heading animate-up">
                 <span class="section-tag">Layouts</span>
@@ -397,14 +378,54 @@
             </div>
 
             <div id="1bhk" class="tab-content active">
-                <div class="plan-shell reveal">
-                    <img src="floorplan1.jpg" alt="1BHK floor plan">
+                <div class="fp-carousel reveal" id="fp-carousel-1bhk" tabindex="0" aria-label="1BHK floor plan carousel">
+                    <button class="fp-arrow fp-arrow-left" aria-label="Previous floor plan"><i class="fas fa-chevron-left"></i></button>
+                    <div class="fp-carousel-viewport">
+                        <div class="fp-slide" data-index="0">
+                            <img src="assets/floorplans/1bhk-left.jpg" alt="1BHK Floor Plan - Left layout">
+                            <span class="fp-slide-label">Left Layout</span>
+                        </div>
+                        <div class="fp-slide" data-index="1">
+                            <img src="assets/floorplans/1bhk-center.jpg" alt="1BHK Floor Plan - Center layout">
+                            <span class="fp-slide-label">Center Layout</span>
+                        </div>
+                        <div class="fp-slide" data-index="2">
+                            <img src="assets/floorplans/1bhk-right.jpg" alt="1BHK Floor Plan - Right layout">
+                            <span class="fp-slide-label">Right Layout</span>
+                        </div>
+                    </div>
+                    <button class="fp-arrow fp-arrow-right" aria-label="Next floor plan"><i class="fas fa-chevron-right"></i></button>
+                    <div class="fp-dots">
+                        <button class="fp-dot" data-fp-slide="0" aria-label="View layout 1"></button>
+                        <button class="fp-dot active" data-fp-slide="1" aria-label="View layout 2"></button>
+                        <button class="fp-dot" data-fp-slide="2" aria-label="View layout 3"></button>
+                    </div>
                 </div>
             </div>
 
             <div id="2bhk" class="tab-content">
-                <div class="plan-shell reveal">
-                    <img src="floorplan2.jpg" alt="2BHK floor plan">
+                <div class="fp-carousel reveal" id="fp-carousel-2bhk" tabindex="0" aria-label="2BHK floor plan carousel">
+                    <button class="fp-arrow fp-arrow-left" aria-label="Previous floor plan"><i class="fas fa-chevron-left"></i></button>
+                    <div class="fp-carousel-viewport">
+                        <div class="fp-slide" data-index="0">
+                            <img src="assets/floorplans/2bhk-left.jpg" alt="2BHK Floor Plan - Left layout">
+                            <span class="fp-slide-label">Left Layout</span>
+                        </div>
+                        <div class="fp-slide" data-index="1">
+                            <img src="assets/floorplans/2bhk-center.jpg" alt="2BHK Floor Plan - Center layout">
+                            <span class="fp-slide-label">Center Layout</span>
+                        </div>
+                        <div class="fp-slide" data-index="2">
+                            <img src="assets/floorplans/2bhk-right.jpg" alt="2BHK Floor Plan - Right layout">
+                            <span class="fp-slide-label">Right Layout</span>
+                        </div>
+                    </div>
+                    <button class="fp-arrow fp-arrow-right" aria-label="Next floor plan"><i class="fas fa-chevron-right"></i></button>
+                    <div class="fp-dots">
+                        <button class="fp-dot" data-fp-slide="0" aria-label="View layout 1"></button>
+                        <button class="fp-dot active" data-fp-slide="1" aria-label="View layout 2"></button>
+                        <button class="fp-dot" data-fp-slide="2" aria-label="View layout 3"></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -572,14 +593,18 @@
                                         mine.</p>
                                 </div>
                                 <aside class="testimonial-side">
-                                    <div class="test-author-block">
-                                        <p class="test-author">Anita Mehra</p>
-                                        <span class="test-author-role">Family homebuyer</span>
-                                    </div>
-                                    <div class="testimonial-tags">
-                                        <span>Smooth booking</span>
-                                        <span>Smart planning</span>
-                                        <span>Family-friendly</span>
+                                    <div class="testimonial-profile-card">
+                                        <img class="testimonial-avatar" src="assets/testimonials/rajesh.jpg"
+                                            alt="Portrait of Anita Mehra" loading="lazy">
+                                        <div class="test-author-block">
+                                            <p class="test-author">Anita Mehra</p>
+                                            <span class="test-author-role">Family homebuyer</span>
+                                        </div>
+                                        <div class="testimonial-tags">
+                                            <span>Smooth booking</span>
+                                            <span>Smart planning</span>
+                                            <span>Family-friendly</span>
+                                        </div>
                                     </div>
                                 </aside>
                             </div>
@@ -592,14 +617,18 @@
                                         is developing fast and this location felt perfect.</p>
                                 </div>
                                 <aside class="testimonial-side">
-                                    <div class="test-author-block">
-                                        <p class="test-author">Rajesh Patil</p>
-                                        <span class="test-author-role">End-use buyer</span>
-                                    </div>
-                                    <div class="testimonial-tags">
-                                        <span>Location upside</span>
-                                        <span>Genuine pricing</span>
-                                        <span>Fast-developing area</span>
+                                    <div class="testimonial-profile-card">
+                                        <img class="testimonial-avatar" src="assets/testimonials/anita.jpg"
+                                            alt="Portrait of Rajesh Patil" loading="lazy">
+                                        <div class="test-author-block">
+                                            <p class="test-author">Rajesh Patil</p>
+                                            <span class="test-author-role">End-use buyer</span>
+                                        </div>
+                                        <div class="testimonial-tags">
+                                            <span>Location upside</span>
+                                            <span>Genuine pricing</span>
+                                            <span>Fast-developing area</span>
+                                        </div>
                                     </div>
                                 </aside>
                             </div>
@@ -612,14 +641,18 @@
                                         everything clearly, zero confusion, full support.</p>
                                 </div>
                                 <aside class="testimonial-side">
-                                    <div class="test-author-block">
-                                        <p class="test-author">Sonal Desai</p>
-                                        <span class="test-author-role">Family-focused buyer</span>
-                                    </div>
-                                    <div class="testimonial-tags">
-                                        <span>Great walkthrough</span>
-                                        <span>Clubhouse appeal</span>
-                                        <span>Clear guidance</span>
+                                    <div class="testimonial-profile-card">
+                                        <img class="testimonial-avatar" src="assets/testimonials/sonal.jpg"
+                                            alt="Portrait of Sonal Desai" loading="lazy">
+                                        <div class="test-author-block">
+                                            <p class="test-author">Sonal Desai</p>
+                                            <span class="test-author-role">Family-focused buyer</span>
+                                        </div>
+                                        <div class="testimonial-tags">
+                                            <span>Great walkthrough</span>
+                                            <span>Clubhouse appeal</span>
+                                            <span>Clear guidance</span>
+                                        </div>
                                     </div>
                                 </aside>
                             </div>
@@ -632,14 +665,18 @@
                                         Everything was transparent and clear.</p>
                                 </div>
                                 <aside class="testimonial-side">
-                                    <div class="test-author-block">
-                                        <p class="test-author">Vikram Shah</p>
-                                        <span class="test-author-role">Detail-oriented buyer</span>
-                                    </div>
-                                    <div class="testimonial-tags">
-                                        <span>RERA clarity</span>
-                                        <span>Legal confidence</span>
-                                        <span>Transparent process</span>
+                                    <div class="testimonial-profile-card">
+                                        <img class="testimonial-avatar" src="assets/testimonials/neha.jpg"
+                                            alt="Portrait of Vikram Shah" loading="lazy">
+                                        <div class="test-author-block">
+                                            <p class="test-author">Vikram Shah</p>
+                                            <span class="test-author-role">Detail-oriented buyer</span>
+                                        </div>
+                                        <div class="testimonial-tags">
+                                            <span>RERA clarity</span>
+                                            <span>Legal confidence</span>
+                                            <span>Transparent process</span>
+                                        </div>
                                     </div>
                                 </aside>
                             </div>
@@ -652,14 +689,18 @@
                                         my decision to book here.</p>
                                 </div>
                                 <aside class="testimonial-side">
-                                    <div class="test-author-block">
-                                        <p class="test-author">Priya Nair</p>
-                                        <span class="test-author-role">Value-conscious buyer</span>
-                                    </div>
-                                    <div class="testimonial-tags">
-                                        <span>Budget-friendly</span>
-                                        <span>Easy access</span>
-                                        <span>Clean planning</span>
+                                    <div class="testimonial-profile-card">
+                                        <img class="testimonial-avatar" src="assets/testimonials/priya.jpg"
+                                            alt="Portrait of Priya Nair" loading="lazy">
+                                        <div class="test-author-block">
+                                            <p class="test-author">Priya Nair</p>
+                                            <span class="test-author-role">Value-conscious buyer</span>
+                                        </div>
+                                        <div class="testimonial-tags">
+                                            <span>Budget-friendly</span>
+                                            <span>Easy access</span>
+                                            <span>Clean planning</span>
+                                        </div>
                                     </div>
                                 </aside>
                             </div>
@@ -673,14 +714,18 @@
                                     </p>
                                 </div>
                                 <aside class="testimonial-side">
-                                    <div class="test-author-block">
-                                        <p class="test-author">Neha Kulkarni</p>
-                                        <span class="test-author-role">Upgrade homebuyer</span>
-                                    </div>
-                                    <div class="testimonial-tags">
-                                        <span>Organized support</span>
-                                        <span>Balanced amenities</span>
-                                        <span>Strong first impression</span>
+                                    <div class="testimonial-profile-card">
+                                        <img class="testimonial-avatar" src="assets/testimonials/vikram.jpg"
+                                            alt="Portrait of Neha Kulkarni" loading="lazy">
+                                        <div class="test-author-block">
+                                            <p class="test-author">Neha Kulkarni</p>
+                                            <span class="test-author-role">Upgrade homebuyer</span>
+                                        </div>
+                                        <div class="testimonial-tags">
+                                            <span>Organized support</span>
+                                            <span>Balanced amenities</span>
+                                            <span>Strong first impression</span>
+                                        </div>
                                     </div>
                                 </aside>
                             </div>
@@ -763,64 +808,77 @@
                 <h2 class="section-title">FAQs Of Kalpataru Naigaon</h2>
             </div>
 
-            <div class="faq-container">
-                <article class="faq-item reveal">
-                    <button class="faq-question" type="button">Is the Kalpatru Avenue project RERA registered? <i
-                            class="fas fa-chevron-down"></i></button>
-                    <div class="faq-answer">
-                        <p>Yes, Kalpatru Avenue Naigaon East is MahaRERA registered, ensuring complete legal
-                            transparency and timely possession.</p>
+            <div class="faq-layout">
+                <div class="faq-container">
+                    <article class="faq-item reveal active" data-faq-image="assets/faq/faq-rera.jpg" data-faq-title="RERA confidence">
+                        <button class="faq-question" type="button" aria-expanded="true">Is the Kalpatru Avenue project RERA registered? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Yes, Kalpatru Avenue Naigaon East is MahaRERA registered, ensuring complete legal
+                                transparency and timely possession.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item reveal" data-faq-image="assets/faq/faq-configurations.jpg" data-faq-title="Smart configurations">
+                        <button class="faq-question" type="button" aria-expanded="false">What configurations are available at Kalpatru Avenue
+                            Naigaon? <i class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Kalpatru Naigaon offers 1 BHK and 2 BHK residential apartments with smart floor plans and
+                                modern amenities.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item reveal" data-faq-image="assets/faq/faq-connectivity.jpg" data-faq-title="Seamless connectivity">
+                        <button class="faq-question" type="button" aria-expanded="false">How far is it from Kalpataru Avenue to Naigaon Railway
+                            Station? <i class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Kalpataru Naigaon is approximately 7 minutes from Naigaon Station, with everyday
+                                commuter-friendly connectivity.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item reveal" data-faq-image="assets/faq/faq-home-loan.jpg" data-faq-title="Easy financing">
+                        <button class="faq-question" type="button" aria-expanded="false">Can I get a home loan for buying Kalpataru Naigaon East?
+                            <i class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Yes, the Kalpataru Avenue Naigaon East is approved by top banks and NBFCs for hassle-free
+                                home loan processing and financing.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item reveal" data-faq-image="assets/faq/faq-recreation.jpg" data-faq-title="Lifestyle amenities">
+                        <button class="faq-question" type="button" aria-expanded="false">Are there any recreational facilities in the Kalpatru
+                            residencies in Naigaon East? <i class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Yes, residents will have access to the facilities of a clubhouse, garden sit-outs, gym,
+                                children's play area, and indoor games facilities.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item reveal" data-faq-image="assets/faq/faq-investment.jpg" data-faq-title="Long-term value">
+                        <button class="faq-question" type="button" aria-expanded="false">Is Kalpatru Naigaon a long-term investment benefit? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Yes, Kalpatru Naigaon East is in a growth corridor with good ROI potential with future
+                                connectivity and infrastructure.</p>
+                        </div>
+                    </article>
+                    <article class="faq-item reveal" data-faq-image="assets/faq/faq-family.jpg" data-faq-title="Family-focused setting">
+                        <button class="faq-question" type="button" aria-expanded="false">Why is Kalpataru Naigaon appropriate for families? <i
+                                class="fas fa-chevron-down"></i></button>
+                        <div class="faq-answer">
+                            <p>Its peaceful environment and closeness to schools, hospitals, and security centers make
+                                Kalpataru Avenue Naigaon East, a more desirable choice for families seeking safe city life.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="faq-visual reveal" aria-live="polite">
+                    <div class="faq-visual-media" id="faq-visual-media">
+                        <img id="faq-panel-image" src="assets/faq/faq-rera.jpg" alt="FAQ visual" loading="eager" fetchpriority="high">
+                        <div class="faq-visual-overlay"></div>
+                        <div class="faq-visual-caption">
+                            <span class="faq-visual-tag">FAQ Highlight</span>
+                            <h3 id="faq-panel-title">RERA confidence</h3>
+                        </div>
                     </div>
-                </article>
-                <article class="faq-item reveal">
-                    <button class="faq-question" type="button">What configurations are available at Kalpatru Avenue
-                        Naigaon? <i class="fas fa-chevron-down"></i></button>
-                    <div class="faq-answer">
-                        <p>Kalpatru Naigaon offers 1 BHK and 2 BHK residential apartments with smart floor plans and
-                            modern amenities.</p>
-                    </div>
-                </article>
-                <article class="faq-item reveal">
-                    <button class="faq-question" type="button">How far is it from Kalpataru Avenue to Naigaon Railway
-                        Station? <i class="fas fa-chevron-down"></i></button>
-                    <div class="faq-answer">
-                        <p>Kalpataru Naigaon is approximately 7 minutes from Naigaon Station, with everyday
-                            commuter-friendly connectivity.</p>
-                    </div>
-                </article>
-                <article class="faq-item reveal">
-                    <button class="faq-question" type="button">Can I get a home loan for buying Kalpataru Naigaon East?
-                        <i class="fas fa-chevron-down"></i></button>
-                    <div class="faq-answer">
-                        <p>Yes, the Kalpataru Avenue Naigaon East is approved by top banks and NBFCs for hassle-free
-                            home loan processing and financing.</p>
-                    </div>
-                </article>
-                <article class="faq-item reveal">
-                    <button class="faq-question" type="button">Are there any recreational facilities in the Kalpatru
-                        residencies in Naigaon East? <i class="fas fa-chevron-down"></i></button>
-                    <div class="faq-answer">
-                        <p>Yes, residents will have access to the facilities of a clubhouse, garden sit-outs, gym,
-                            children's play area, and indoor games facilities.</p>
-                    </div>
-                </article>
-                <article class="faq-item reveal">
-                    <button class="faq-question" type="button">Is Kalpatru Naigaon a long-term investment benefit? <i
-                            class="fas fa-chevron-down"></i></button>
-                    <div class="faq-answer">
-                        <p>Yes, Kalpatru Naigaon East is in a growth corridor with good ROI potential with future
-                            connectivity and infrastructure.</p>
-                    </div>
-                </article>
-                <article class="faq-item reveal">
-                    <button class="faq-question" type="button">Why is Kalpataru Naigaon appropriate for families? <i
-                            class="fas fa-chevron-down"></i></button>
-                    <div class="faq-answer">
-                        <p>Its peaceful environment and closeness to schools, hospitals, and security centers make
-                            Kalpataru Avenue Naigaon East, a more desirable choice for families seeking safe city life.
-                        </p>
-                    </div>
-                </article>
+                </aside>
             </div>
         </div>
     </section>

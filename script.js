@@ -5,7 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll(".nav-links a");
     const tabButtons = document.querySelectorAll(".tab-btn");
     const tabContents = document.querySelectorAll(".tab-content");
+    const faqItems = Array.from(document.querySelectorAll(".faq-item"));
     const faqQuestions = document.querySelectorAll(".faq-question");
+    const faqPanelImage = document.getElementById("faq-panel-image");
+    const faqPanelTitle = document.getElementById("faq-panel-title");
+    const faqVisualMedia = document.getElementById("faq-visual-media");
+    const faqLayout = document.querySelector(".faq-layout");
+    const faqContainer = faqLayout?.querySelector(".faq-container");
+    const faqVisual = faqLayout?.querySelector(".faq-visual");
+    const faqMobileQuery = window.matchMedia("(max-width: 640px)");
     const revealItems = document.querySelectorAll(".animate-up, .reveal");
 
     // NEW: Modal elements
@@ -84,24 +92,83 @@ document.addEventListener("DOMContentLoaded", () => {
             const target = document.getElementById(targetId);
             if (target) {
                 target.classList.add("active");
+                // Trigger recalculation for carousels that were hidden
+                requestAnimationFrame(() => {
+                    window.dispatchEvent(new Event("resize"));
+                });
             }
         });
+    });
+
+    const setFaqPanelContent = (item) => {
+        if (!item || !faqPanelImage || !faqVisualMedia) return;
+
+        const imageSrc = item.dataset.faqImage;
+        const imageTitle = item.dataset.faqTitle || "FAQ highlight";
+
+        if (!imageSrc) return;
+
+        faqVisualMedia.classList.add("is-transitioning");
+        window.setTimeout(() => {
+            faqPanelImage.src = imageSrc;
+            faqPanelImage.alt = imageTitle;
+            if (faqPanelTitle) {
+                faqPanelTitle.textContent = imageTitle;
+            }
+            requestAnimationFrame(() => {
+                faqVisualMedia.classList.remove("is-transitioning");
+            });
+        }, 160);
+    };
+
+    const activateFaq = (targetItem) => {
+        if (!targetItem) return;
+
+        faqItems.forEach((item) => {
+            const isActive = item === targetItem;
+            item.classList.toggle("active", isActive);
+            const btn = item.querySelector(".faq-question");
+            if (btn) {
+                btn.setAttribute("aria-expanded", String(isActive));
+            }
+        });
+
+        setFaqPanelContent(targetItem);
+
+        if (faqVisual && faqLayout && faqContainer) {
+            if (faqMobileQuery.matches) {
+                targetItem.insertAdjacentElement("afterend", faqVisual);
+            } else {
+                faqLayout.appendChild(faqVisual);
+            }
+        }
+    };
+
+    if (faqItems.length > 0) {
+        const initialItem = faqItems.find((item) => item.classList.contains("active")) || faqItems[0];
+
+        // Preload mapped FAQ visuals for smoother panel transitions.
+        faqItems.forEach((item) => {
+            if (!item.dataset.faqImage) return;
+            const img = new Image();
+            img.src = item.dataset.faqImage;
+        });
+
+        activateFaq(initialItem);
+    }
+
+    faqMobileQuery.addEventListener("change", () => {
+        const activeItem = faqItems.find((item) => item.classList.contains("active")) || faqItems[0];
+        if (activeItem) {
+            activateFaq(activeItem);
+        }
     });
 
     faqQuestions.forEach((question) => {
         question.addEventListener("click", () => {
             const currentItem = question.closest(".faq-item");
-
-            faqQuestions.forEach((otherQuestion) => {
-                const item = otherQuestion.closest(".faq-item");
-                if (item && item !== currentItem) {
-                    item.classList.remove("active");
-                }
-            });
-
-            if (currentItem) {
-                currentItem.classList.toggle("active");
-            }
+            if (!currentItem) return;
+            activateFaq(currentItem);
         });
     });
 
@@ -139,33 +206,88 @@ document.addEventListener("DOMContentLoaded", () => {
         revealItems.forEach((item) => item.classList.add("is-visible"));
     }
 
-    // ── Gallery Carousel ──
+    // ── Gallery Carousel (Dynamic 11-Image) ──
     const carousel = document.getElementById("gallery-carousel");
     if (carousel) {
-        const track = carousel.querySelector(".carousel-track");
-        const slides = carousel.querySelectorAll(".carousel-slide");
-        const dots = carousel.querySelectorAll(".carousel-dot");
+        const track = document.getElementById("gallery-track");
+        const dotsContainer = document.getElementById("gallery-dots");
         const prevBtn = carousel.querySelector(".carousel-prev");
         const nextBtn = carousel.querySelector(".carousel-next");
+        
+        // Visual Preview carousel: 3 existing images + 8 newly uploaded amenity images
+        const galleryImages = [
+            { src: 'assets/gallery/facade.jpg', label: 'Signature facade' },
+            { src: 'assets/gallery/gym.jpg', label: 'Green open spaces' },
+            { src: 'assets/gallery/green-space.jpg', label: 'Fitness amenities' },
+            { src: 'assets/amenities/amenity1.jpg', label: 'Infinity pool deck' },
+            { src: 'assets/amenities/amenity2.jpg', label: 'Designer kitchen' },
+            { src: 'assets/amenities/amenity3.jpg', label: 'Kids play zone' },
+            { src: 'assets/amenities/amenity4.jpg', label: 'Rooftop lounge' },
+            { src: 'assets/amenities/amenity5.jpg', label: 'Family living room' },
+            { src: 'assets/amenities/amenity6.jpg', label: 'Master bedroom' },
+            { src: 'assets/amenities/amenity7.jpg', label: 'Coworking lounge' },
+            { src: 'assets/amenities/amenity8.jpg', label: 'Grand entrance lobby' },
+            { src: 'assets/amenities/lobby.jpg', label: 'Grand lobby' },
+            { src: 'assets/amenities/jogging.jpg', label: 'Jogging track' },
+            { src: 'assets/amenities/indoor-games.jpg', label: 'Indoor games' }
+        ];
+
+        // 1. Generate Slides and Dots
+        let slidesHTML = "";
+        let dotsHTML = "";
+        galleryImages.forEach((img, i) => {
+            slidesHTML += `
+                <article class="carousel-slide">
+                    <img src="${img.src}" alt="${img.label}" loading="${i === 0 ? 'eager' : 'lazy'}">
+                    <div class="gallery-overlay">
+                        <h4>${img.label}</h4>
+                    </div>
+                </article>
+            `;
+            dotsHTML += `<button class="carousel-dot ${i === 0 ? 'active' : ''}" data-slide="${i}" aria-label="Go to slide ${i + 1}"></button>`;
+        });
+        
+        track.innerHTML = slidesHTML;
+        dotsContainer.innerHTML = dotsHTML;
+
+        // 2. Setup Logic
+        const slides = track.querySelectorAll(".carousel-slide");
+        const dots = dotsContainer.querySelectorAll(".carousel-dot");
         let current = 0;
         let autoTimer = null;
+        let isTransitioning = false;
 
         const goTo = (index) => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            
+            // Handle negative index / overflow for infinite loop
             current = ((index % slides.length) + slides.length) % slides.length;
+            
             track.style.transform = `translateX(-${current * 100}%)`;
             dots.forEach((d, i) => d.classList.toggle("active", i === current));
+            
+            setTimeout(() => { isTransitioning = false; }, 500); // match CSS duration
         };
 
         const next = () => goTo(current + 1);
         const prev = () => goTo(current - 1);
 
-        const startAuto = () => { autoTimer = setInterval(next, 4000); };
+        const startAuto = () => { 
+            clearInterval(autoTimer);
+            autoTimer = setInterval(next, 4000); 
+        };
         const stopAuto = () => { clearInterval(autoTimer); };
 
         nextBtn.addEventListener("click", () => { stopAuto(); next(); startAuto(); });
         prevBtn.addEventListener("click", () => { stopAuto(); prev(); startAuto(); });
+        
         dots.forEach((dot) => {
-            dot.addEventListener("click", () => { stopAuto(); goTo(+dot.dataset.slide); startAuto(); });
+            dot.addEventListener("click", () => { 
+                stopAuto(); 
+                goTo(parseInt(dot.dataset.slide)); 
+                startAuto(); 
+            });
         });
 
         carousel.addEventListener("mouseenter", stopAuto);
@@ -173,10 +295,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Touch swipe support
         let touchStartX = 0;
-        carousel.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].clientX; stopAuto(); }, { passive: true });
+        carousel.addEventListener("touchstart", (e) => { 
+            touchStartX = e.changedTouches[0].clientX; 
+            stopAuto(); 
+        }, { passive: true });
+        
         carousel.addEventListener("touchend", (e) => {
             const diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); }
+            if (Math.abs(diff) > 50) { 
+                diff > 0 ? next() : prev(); 
+            }
             startAuto();
         }, { passive: true });
 
@@ -244,4 +372,206 @@ document.addEventListener("DOMContentLoaded", () => {
         tGoTo(0);
         tStartAuto();
     }
+
+    // ── Floor Plan Carousel (Center-Focus, Transform-Based) ──
+    const floorPlanAssetBase = "assets/floorplans";
+    const oneBHKImages = [
+        "1bhk-left.jpg",
+        "1bhk-center.jpg",
+        "1bhk-right.jpg"
+    ];
+
+    const twoBHKImages = [
+        "2bhk-left.jpg",
+        "2bhk-center.jpg",
+        "2bhk-right.jpg"
+    ];
+
+    const applyFloorPlanImages = (container, unitLabel, imageNames) => {
+        if (!container) return;
+
+        const slides = Array.from(container.querySelectorAll(".fp-slide"));
+        const slideNames = ["Left layout", "Center layout", "Right layout"];
+
+        slides.forEach((slide, i) => {
+            const img = slide.querySelector("img");
+            if (!img || !imageNames[i]) return;
+
+            img.src = `${floorPlanAssetBase}/${imageNames[i]}`;
+            img.alt = `${unitLabel} Floor Plan - ${slideNames[i]}`;
+
+            const label = slide.querySelector(".fp-slide-label");
+            if (label) {
+                label.textContent = slideNames[i];
+            }
+        });
+    };
+
+    const initFloorPlanCarousel = (container) => {
+        if (!container) return;
+
+        const slides = Array.from(container.querySelectorAll(".fp-slide"));
+        const dots = container.querySelectorAll(".fp-dot");
+        const prevBtn = container.querySelector(".fp-arrow-left");
+        const nextBtn = container.querySelector(".fp-arrow-right");
+        const total = slides.length;
+        let currentIndex = 0;
+        const viewport = container.querySelector(".fp-carousel-viewport");
+
+        const getPositionConfig = () => {
+            const vw = viewport.offsetWidth;
+            const sideOffset = Math.round(vw * 0.3);
+            const hiddenOffset = Math.round(vw * 0.55);
+            return {
+                center: {
+                    tx: 0,
+                    ty: -10,
+                    scale: 1,
+                    opacity: 1,
+                    z: 6,
+                    shadow: "0 26px 58px rgba(25,34,28,0.2), 0 10px 24px rgba(186,145,84,0.13)",
+                    filter: "saturate(1)",
+                    pointer: "auto"
+                },
+                left: {
+                    tx: -sideOffset,
+                    ty: 8,
+                    scale: 0.88,
+                    opacity: 0.68,
+                    z: 3,
+                    shadow: "0 12px 28px rgba(25,34,28,0.1)",
+                    filter: "saturate(0.74)",
+                    pointer: "auto"
+                },
+                right: {
+                    tx: sideOffset,
+                    ty: 8,
+                    scale: 0.88,
+                    opacity: 0.68,
+                    z: 3,
+                    shadow: "0 12px 28px rgba(25,34,28,0.1)",
+                    filter: "saturate(0.74)",
+                    pointer: "auto"
+                },
+                hiddenLeft: {
+                    tx: -hiddenOffset,
+                    ty: 16,
+                    scale: 0.75,
+                    opacity: 0,
+                    z: 1,
+                    shadow: "none",
+                    filter: "saturate(0.5)",
+                    pointer: "none"
+                },
+                hiddenRight: {
+                    tx: hiddenOffset,
+                    ty: 16,
+                    scale: 0.75,
+                    opacity: 0,
+                    z: 1,
+                    shadow: "none",
+                    filter: "saturate(0.5)",
+                    pointer: "none"
+                }
+            };
+        };
+
+        const getWrappedIndex = (index) => {
+            return ((index % total) + total) % total;
+        };
+
+        const render = () => {
+            const positions = getPositionConfig();
+
+            slides.forEach((slide, i) => {
+                let pos = positions.hiddenRight;
+                let posName = "hidden";
+                const forwardDistance = getWrappedIndex(i - currentIndex);
+                const backwardDistance = getWrappedIndex(currentIndex - i);
+
+                if (i === currentIndex) {
+                    pos = positions.center;
+                    posName = "center";
+                } else if (backwardDistance === 1) {
+                    pos = positions.left;
+                    posName = "left";
+                } else if (forwardDistance === 1) {
+                    pos = positions.right;
+                    posName = "right";
+                } else if (backwardDistance < forwardDistance) {
+                    pos = positions.hiddenLeft;
+                }
+
+                slide.style.transform = `translate(calc(-50% + ${pos.tx}px), calc(-50% + ${pos.ty}px)) scale(${pos.scale})`;
+                slide.style.opacity = pos.opacity;
+                slide.style.zIndex = pos.z;
+                slide.style.boxShadow = pos.shadow;
+                slide.style.filter = pos.filter;
+                slide.style.pointerEvents = pos.pointer;
+                slide.dataset.pos = posName;
+            });
+
+            dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
+        };
+
+        // Recalculate on resize
+        window.addEventListener("resize", () => { render(); }, { passive: true });
+
+        const goTo = (index) => {
+            currentIndex = getWrappedIndex(index);
+            render();
+        };
+
+        const goNext = () => goTo(currentIndex + 1);
+        const goPrev = () => goTo(currentIndex - 1);
+
+        // Arrow buttons
+        nextBtn?.addEventListener("click", goNext);
+        prevBtn?.addEventListener("click", goPrev);
+
+        // Dot navigation
+        dots.forEach((dot) => {
+            dot.addEventListener("click", () => goTo(+dot.dataset.fpSlide));
+        });
+
+        // Click on ANY slide to bring it to center
+        slides.forEach((slide, i) => {
+            slide.addEventListener("click", () => {
+                if (i !== currentIndex) {
+                    goTo(i);
+                }
+            });
+        });
+
+        // Keyboard navigation
+        container.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft") { e.preventDefault(); goPrev(); }
+            if (e.key === "ArrowRight") { e.preventDefault(); goNext(); }
+        });
+
+        // Touch swipe
+        let fpTouchX = 0;
+        container.addEventListener("touchstart", (e) => {
+            fpTouchX = e.changedTouches[0].clientX;
+        }, { passive: true });
+
+        container.addEventListener("touchend", (e) => {
+            const diff = fpTouchX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? goNext() : goPrev();
+            }
+        }, { passive: true });
+
+        // Initial render
+        render();
+    };
+
+    const oneBHKCarousel = document.getElementById("fp-carousel-1bhk");
+    const twoBHKCarousel = document.getElementById("fp-carousel-2bhk");
+
+    applyFloorPlanImages(oneBHKCarousel, "1BHK", oneBHKImages);
+    applyFloorPlanImages(twoBHKCarousel, "2BHK", twoBHKImages);
+
+    initFloorPlanCarousel(oneBHKCarousel);
+    initFloorPlanCarousel(twoBHKCarousel);
 });
