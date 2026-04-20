@@ -569,8 +569,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const oneBHKCarousel = document.getElementById("fp-carousel-1bhk");
     const twoBHKCarousel = document.getElementById("fp-carousel-2bhk");
 
-    applyFloorPlanImages(oneBHKCarousel, "1BHK", oneBHKImages);
-    applyFloorPlanImages(twoBHKCarousel, "2BHK", twoBHKImages);
+    applyFloorPlanImages(oneBHKCarousel, "Layout Set 1", oneBHKImages);
+    applyFloorPlanImages(twoBHKCarousel, "Layout Set 2", twoBHKImages);
 
     initFloorPlanCarousel(oneBHKCarousel);
     initFloorPlanCarousel(twoBHKCarousel);
