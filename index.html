@@ -131,9 +131,9 @@
 
                 <div class="rera-badges">
                     <div class="rera-badge-card">
-                        <div class="rera-number-icon"><i class="fas fa-location-dot"></i></div>
-                        <span class="rera-badge-label">Sales Office</span>
-                        <strong class="rera-number-value">Survey No. 211</strong>
+                        <div class="rera-number-icon"><i class="fas fa-certificate"></i></div>
+                        <span class="rera-badge-label">MAHARERA REG. NO:</span>
+                        <strong class="rera-number-value">P99000080427</strong>
                     </div>
                     <div class="rera-badge-card">
                         <div class="rera-number-icon"><i class="fas fa-hospital"></i></div>
@@ -426,7 +426,7 @@
                     <button class="fp-arrow fp-arrow-left" aria-label="Previous floor plan"><i class="fas fa-chevron-left"></i></button>
                     <div class="fp-carousel-viewport">
                         <div class="fp-slide" data-index="0">
-                            <img src="Layout/Full.png" alt="Full Layout">
+                            <img src="Layout/Full.png" alt="Full Layout" class="clickable-floorplan" style="cursor: zoom-in;">
                             <span class="fp-slide-label">Full Layout</span>
                         </div>
                     </div>
@@ -442,19 +442,19 @@
                     <button class="fp-arrow fp-arrow-left" aria-label="Previous floor plan"><i class="fas fa-chevron-left"></i></button>
                     <div class="fp-carousel-viewport">
                         <div class="fp-slide" data-index="0">
-                            <img src="Layout/1Bhk top.png" alt="1 BHK Top Layout">
+                            <img src="Layout/1Bhk top.png" alt="1 BHK Top Layout" class="clickable-floorplan" style="cursor: zoom-in;">
                             <span class="fp-slide-label">1 BHK Top</span>
                         </div>
                         <div class="fp-slide" data-index="1">
-                            <img src="Layout/1bhk 3.png" alt="1 BHK Layout 3">
+                            <img src="Layout/1bhk 3.png" alt="1 BHK Layout 3" class="clickable-floorplan" style="cursor: zoom-in;">
                             <span class="fp-slide-label">1 BHK Layout 3</span>
                         </div>
                         <div class="fp-slide" data-index="2">
-                            <img src="Layout/1bhk 4.png" alt="1 BHK Layout 4">
+                            <img src="Layout/1bhk 4.png" alt="1 BHK Layout 4" class="clickable-floorplan" style="cursor: zoom-in;">
                             <span class="fp-slide-label">1 BHK Layout 4</span>
                         </div>
                         <div class="fp-slide" data-index="3">
-                            <img src="Layout/1bhk 5.png" alt="1 BHK Layout 5">
+                            <img src="Layout/1bhk 5.png" alt="1 BHK Layout 5" class="clickable-floorplan" style="cursor: zoom-in;">
                             <span class="fp-slide-label">1 BHK Layout 5</span>
                         </div>
                     </div>
@@ -473,7 +473,7 @@
                     <button class="fp-arrow fp-arrow-left" aria-label="Previous floor plan"><i class="fas fa-chevron-left"></i></button>
                     <div class="fp-carousel-viewport">
                         <div class="fp-slide" data-index="0">
-                            <img src="Layout/2bhk.png" alt="2 BHK Layout">
+                            <img src="Layout/2bhk.png" alt="2 BHK Layout" class="clickable-floorplan" style="cursor: zoom-in;">
                             <span class="fp-slide-label">2 BHK Layout</span>
                         </div>
                     </div>
@@ -1079,6 +1079,14 @@
         rel="noopener noreferrer" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- NEW: Image Lightbox Modal for Floor Plans -->
+    <div id="floorplan-lightbox" class="floorplan-lightbox">
+        <button id="floorplan-lightbox-close" class="floorplan-lightbox-close" aria-label="Close Lightbox">&times;</button>
+        <button id="floorplan-lightbox-prev" class="floorplan-lightbox-nav floorplan-lightbox-prev" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+        <img id="floorplan-lightbox-img" class="floorplan-lightbox-img" src="" alt="Enlarged floor plan">
+        <button id="floorplan-lightbox-next" class="floorplan-lightbox-nav floorplan-lightbox-next" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+    </div>
 
     <!-- NEW: Modal overlay and modal content for Enquire Now form -->
     <div id="enquire-modal" class="modal-overlay">

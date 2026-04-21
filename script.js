@@ -594,4 +594,77 @@ document.addEventListener("DOMContentLoaded", () => {
     initFloorPlanCarousel(fullLayoutCarousel);
     initFloorPlanCarousel(oneBHKCarousel);
     initFloorPlanCarousel(twoBHKCarousel);
+
+    // ── Floor Plan Lightbox Logic ──
+    const lightbox = document.getElementById("floorplan-lightbox");
+    const lightboxImg = document.getElementById("floorplan-lightbox-img");
+    const lightboxClose = document.getElementById("floorplan-lightbox-close");
+    const lightboxPrev = document.getElementById("floorplan-lightbox-prev");
+    const lightboxNext = document.getElementById("floorplan-lightbox-next");
+    const clickableFloorplans = Array.from(document.querySelectorAll(".clickable-floorplan"));
+    let currentLightboxIndex = 0;
+
+    if (lightbox && lightboxImg && clickableFloorplans.length > 0) {
+        const openLightbox = (index) => {
+            currentLightboxIndex = index;
+            lightboxImg.src = clickableFloorplans[currentLightboxIndex].src;
+            lightbox.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+        };
+
+        const closeLightbox = () => {
+            lightbox.classList.remove("is-open");
+            // Don't remove overflow if the main enquire modal is open
+            if (!document.getElementById("enquire-modal")?.classList.contains("is-open")) {
+                document.body.style.overflow = "";
+            }
+        };
+
+        const showNextImage = () => {
+            currentLightboxIndex++;
+            if (currentLightboxIndex >= clickableFloorplans.length) {
+                currentLightboxIndex = 0; // loop back
+            }
+            lightboxImg.src = clickableFloorplans[currentLightboxIndex].src;
+        };
+
+        const showPrevImage = () => {
+            currentLightboxIndex--;
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = clickableFloorplans.length - 1; // loop to last
+            }
+            lightboxImg.src = clickableFloorplans[currentLightboxIndex].src;
+        };
+
+        // Attach click to image tags
+        clickableFloorplans.forEach((img, index) => {
+            img.addEventListener("click", () => {
+                openLightbox(index);
+            });
+        });
+
+        // Navigation buttons
+        lightboxNext?.addEventListener("click", showNextImage);
+        lightboxPrev?.addEventListener("click", showPrevImage);
+
+        lightboxClose?.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (!lightbox.classList.contains("is-open")) return;
+            
+            if (e.key === "Escape") {
+                closeLightbox();
+            } else if (e.key === "ArrowRight") {
+                showNextImage();
+            } else if (e.key === "ArrowLeft") {
+                showPrevImage();
+            }
+        });
+    }
 });
