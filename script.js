@@ -374,35 +374,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ── Floor Plan Carousel (Center-Focus, Transform-Based) ──
-    const floorPlanAssetBase = "assets/floorplans";
+    const floorPlanAssetBase = "Layout";
+    const fullLayoutImages = [
+        { file: "Full.png", label: "Full Layout" }
+    ];
+
     const oneBHKImages = [
-        "1bhk-left.jpg",
-        "1bhk-center.jpg",
-        "1bhk-right.jpg"
+        { file: "1Bhk top.png", label: "1 BHK Top Layout" },
+        { file: "1bhk 3.png", label: "1 BHK Layout 3" },
+        { file: "1bhk 4.png", label: "1 BHK Layout 4" },
+        { file: "1bhk 5.png", label: "1 BHK Layout 5" }
     ];
 
     const twoBHKImages = [
-        "2bhk-left.jpg",
-        "2bhk-center.jpg",
-        "2bhk-right.jpg"
+        { file: "2bhk.png", label: "2 BHK Layout" }
     ];
 
-    const applyFloorPlanImages = (container, unitLabel, imageNames) => {
+    const applyFloorPlanImages = (container, unitLabel, imageConfigs) => {
         if (!container) return;
 
         const slides = Array.from(container.querySelectorAll(".fp-slide"));
-        const slideNames = ["Left layout", "Center layout", "Right layout"];
 
         slides.forEach((slide, i) => {
             const img = slide.querySelector("img");
-            if (!img || !imageNames[i]) return;
+            const config = imageConfigs[i];
+            if (!img || !config) return;
 
-            img.src = `${floorPlanAssetBase}/${imageNames[i]}`;
-            img.alt = `${unitLabel} Floor Plan - ${slideNames[i]}`;
+            img.src = `${floorPlanAssetBase}/${config.file}`;
+            img.alt = `${unitLabel} - ${config.label}`;
 
             const label = slide.querySelector(".fp-slide-label");
             if (label) {
-                label.textContent = slideNames[i];
+                label.textContent = config.label;
             }
         });
     };
@@ -417,6 +420,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const total = slides.length;
         let currentIndex = 0;
         const viewport = container.querySelector(".fp-carousel-viewport");
+        const dotsWrap = container.querySelector(".fp-dots");
+
+        container.classList.toggle("fp-carousel-single", total <= 1);
+        if (dotsWrap) {
+            dotsWrap.hidden = total <= 1;
+        }
+
+        if (prevBtn) {
+            prevBtn.hidden = total <= 1;
+        }
+
+        if (nextBtn) {
+            nextBtn.hidden = total <= 1;
+        }
 
         const getPositionConfig = () => {
             const vw = viewport.offsetWidth;
@@ -489,7 +506,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const forwardDistance = getWrappedIndex(i - currentIndex);
                 const backwardDistance = getWrappedIndex(currentIndex - i);
 
-                if (i === currentIndex) {
+                if (total <= 1 || i === currentIndex) {
                     pos = positions.center;
                     posName = "center";
                 } else if (backwardDistance === 1) {
@@ -566,12 +583,15 @@ document.addEventListener("DOMContentLoaded", () => {
         render();
     };
 
+    const fullLayoutCarousel = document.getElementById("fp-carousel-full-layout");
     const oneBHKCarousel = document.getElementById("fp-carousel-1bhk");
     const twoBHKCarousel = document.getElementById("fp-carousel-2bhk");
 
-    applyFloorPlanImages(oneBHKCarousel, "Layout Set 1", oneBHKImages);
-    applyFloorPlanImages(twoBHKCarousel, "Layout Set 2", twoBHKImages);
+    applyFloorPlanImages(fullLayoutCarousel, "Full Layout", fullLayoutImages);
+    applyFloorPlanImages(oneBHKCarousel, "1 BHK Layout", oneBHKImages);
+    applyFloorPlanImages(twoBHKCarousel, "2 BHK Layout", twoBHKImages);
 
+    initFloorPlanCarousel(fullLayoutCarousel);
     initFloorPlanCarousel(oneBHKCarousel);
     initFloorPlanCarousel(twoBHKCarousel);
 });

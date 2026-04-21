@@ -938,6 +938,8 @@ section {
 
 .floor-plan-section .tabs {
     margin: 0 auto 2rem;
+    width: min(100%, 920px);
+    justify-content: center;
 }
 
 .floor-plan-section .tab-content {
@@ -978,6 +980,10 @@ section {
         box-shadow 0.36s ease-in-out,
         filter 0.36s ease-in-out;
     will-change: transform, opacity;
+}
+
+.floor-plan-section .fp-carousel-single .fp-slide {
+    width: min(88%, 980px);
 }
 
 .floor-plan-section .fp-slide img {
@@ -3705,9 +3711,10 @@ tbody tr:last-child td {
         margin-bottom: 1.6rem;
     }
 
-    .floor-plan-section .tab-btn {
+.floor-plan-section .tab-btn {
         flex: 1;
         text-align: center;
+        line-height: 1.2;
     }
 
     .floor-plan-section .fp-carousel {

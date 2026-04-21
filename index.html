@@ -416,58 +416,70 @@
             </div>
 
             <div class="tabs">
-                <button class="tab-btn active" data-tab="1bhk">Layout Set 1</button>
-                <button class="tab-btn" data-tab="2bhk">Layout Set 2</button>
+                <button class="tab-btn active" data-tab="full-layout">Full Layout</button>
+                <button class="tab-btn" data-tab="one-bhk-layout">1 BHK Layout</button>
+                <button class="tab-btn" data-tab="two-bhk-layout">2 BHK Layout</button>
             </div>
 
-            <div id="1bhk" class="tab-content active">
-                <div class="fp-carousel reveal" id="fp-carousel-1bhk" tabindex="0" aria-label="Layout set 1 carousel">
+            <div id="full-layout" class="tab-content active">
+                <div class="fp-carousel reveal" id="fp-carousel-full-layout" tabindex="0" aria-label="Full layout carousel">
                     <button class="fp-arrow fp-arrow-left" aria-label="Previous floor plan"><i class="fas fa-chevron-left"></i></button>
                     <div class="fp-carousel-viewport">
                         <div class="fp-slide" data-index="0">
-                            <img src="assets/floorplans/1bhk-left.jpg" alt="Layout Set 1 - Left layout">
-                            <span class="fp-slide-label">Left Layout</span>
-                        </div>
-                        <div class="fp-slide" data-index="1">
-                            <img src="assets/floorplans/1bhk-center.jpg" alt="Layout Set 1 - Center layout">
-                            <span class="fp-slide-label">Center Layout</span>
-                        </div>
-                        <div class="fp-slide" data-index="2">
-                            <img src="assets/floorplans/1bhk-right.jpg" alt="Layout Set 1 - Right layout">
-                            <span class="fp-slide-label">Right Layout</span>
+                            <img src="Layout/Full.png" alt="Full Layout">
+                            <span class="fp-slide-label">Full Layout</span>
                         </div>
                     </div>
                     <button class="fp-arrow fp-arrow-right" aria-label="Next floor plan"><i class="fas fa-chevron-right"></i></button>
                     <div class="fp-dots">
-                        <button class="fp-dot" data-fp-slide="0" aria-label="View layout 1"></button>
-                        <button class="fp-dot active" data-fp-slide="1" aria-label="View layout 2"></button>
-                        <button class="fp-dot" data-fp-slide="2" aria-label="View layout 3"></button>
+                        <button class="fp-dot active" data-fp-slide="0" aria-label="View full layout"></button>
                     </div>
                 </div>
             </div>
 
-            <div id="2bhk" class="tab-content">
-                <div class="fp-carousel reveal" id="fp-carousel-2bhk" tabindex="0" aria-label="Layout set 2 carousel">
+            <div id="one-bhk-layout" class="tab-content">
+                <div class="fp-carousel reveal" id="fp-carousel-1bhk" tabindex="0" aria-label="1 BHK layout carousel">
                     <button class="fp-arrow fp-arrow-left" aria-label="Previous floor plan"><i class="fas fa-chevron-left"></i></button>
                     <div class="fp-carousel-viewport">
                         <div class="fp-slide" data-index="0">
-                            <img src="assets/floorplans/2bhk-left.jpg" alt="Layout Set 2 - Left layout">
-                            <span class="fp-slide-label">Left Layout</span>
+                            <img src="Layout/1Bhk top.png" alt="1 BHK Top Layout">
+                            <span class="fp-slide-label">1 BHK Top</span>
                         </div>
                         <div class="fp-slide" data-index="1">
-                            <img src="assets/floorplans/2bhk-center.jpg" alt="Layout Set 2 - Center layout">
-                            <span class="fp-slide-label">Center Layout</span>
+                            <img src="Layout/1bhk 3.png" alt="1 BHK Layout 3">
+                            <span class="fp-slide-label">1 BHK Layout 3</span>
                         </div>
                         <div class="fp-slide" data-index="2">
-                            <img src="assets/floorplans/2bhk-right.jpg" alt="Layout Set 2 - Right layout">
-                            <span class="fp-slide-label">Right Layout</span>
+                            <img src="Layout/1bhk 4.png" alt="1 BHK Layout 4">
+                            <span class="fp-slide-label">1 BHK Layout 4</span>
+                        </div>
+                        <div class="fp-slide" data-index="3">
+                            <img src="Layout/1bhk 5.png" alt="1 BHK Layout 5">
+                            <span class="fp-slide-label">1 BHK Layout 5</span>
                         </div>
                     </div>
                     <button class="fp-arrow fp-arrow-right" aria-label="Next floor plan"><i class="fas fa-chevron-right"></i></button>
                     <div class="fp-dots">
-                        <button class="fp-dot" data-fp-slide="0" aria-label="View layout 1"></button>
-                        <button class="fp-dot active" data-fp-slide="1" aria-label="View layout 2"></button>
-                        <button class="fp-dot" data-fp-slide="2" aria-label="View layout 3"></button>
+                        <button class="fp-dot active" data-fp-slide="0" aria-label="View 1 BHK layout 1"></button>
+                        <button class="fp-dot" data-fp-slide="1" aria-label="View 1 BHK layout 2"></button>
+                        <button class="fp-dot" data-fp-slide="2" aria-label="View 1 BHK layout 3"></button>
+                        <button class="fp-dot" data-fp-slide="3" aria-label="View 1 BHK layout 4"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="two-bhk-layout" class="tab-content">
+                <div class="fp-carousel reveal" id="fp-carousel-2bhk" tabindex="0" aria-label="2 BHK layout carousel">
+                    <button class="fp-arrow fp-arrow-left" aria-label="Previous floor plan"><i class="fas fa-chevron-left"></i></button>
+                    <div class="fp-carousel-viewport">
+                        <div class="fp-slide" data-index="0">
+                            <img src="Layout/2bhk.png" alt="2 BHK Layout">
+                            <span class="fp-slide-label">2 BHK Layout</span>
+                        </div>
+                    </div>
+                    <button class="fp-arrow fp-arrow-right" aria-label="Next floor plan"><i class="fas fa-chevron-right"></i></button>
+                    <div class="fp-dots">
+                        <button class="fp-dot active" data-fp-slide="0" aria-label="View 2 BHK layout"></button>
                     </div>
                 </div>
             </div>
